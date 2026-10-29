@@ -114,12 +114,14 @@ $args
 $error
 # <- punctuation.definition.variable.powershell
 # ^ support.variable.automatic.powershell
-$home
-# <- punctuation.definition.variable.powershell
-# ^ support.constant.variable.powershell
 $foreach
 # <- punctuation.definition.variable.powershell
 # ^ support.variable.automatic.powershell
+
+# Automatic constants
+$home
+# <- punctuation.definition.variable.powershell
+# ^ variable.other.constant.powershell
 
 # Normal variables
 $variable
