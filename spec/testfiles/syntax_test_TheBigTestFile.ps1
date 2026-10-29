@@ -113,7 +113,7 @@ $args
 # ^ support.variable.automatic.powershell
 $error
 # <- punctuation.definition.variable.powershell
-# ^ support.constant.variable.powershell
+# ^ support.variable.automatic.powershell
 $home
 # <- punctuation.definition.variable.powershell
 # ^ support.constant.variable.powershell
