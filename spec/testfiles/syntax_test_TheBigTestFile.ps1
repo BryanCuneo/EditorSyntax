@@ -119,7 +119,25 @@ $foreach
 # ^ support.variable.automatic.powershell
 
 # Automatic constants
+$executioncontext
+# <- punctuation.definition.variable.powershell
+# ^ variable.other.constant.powershell
+$host
+# <- punctuation.definition.variable.powershell
+# ^ variable.other.constant.powershell
 $home
+# <- punctuation.definition.variable.powershell
+# ^ variable.other.constant.powershell
+$pid
+# <- punctuation.definition.variable.powershell
+# ^ variable.other.constant.powershell
+$pshome
+# <- punctuation.definition.variable.powershell
+# ^ variable.other.constant.powershell
+$psversiontable
+# <- punctuation.definition.variable.powershell
+# ^ variable.other.constant.powershell
+$shellid
 # <- punctuation.definition.variable.powershell
 # ^ variable.other.constant.powershell
 
