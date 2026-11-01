@@ -26,25 +26,33 @@
         2 tests, 5 assertions, 0 failures, 0 skipped
 #>
 param(
+    [Parameter(Mandatory, ParameterSetName = "Test")]
     [switch]
-    $Test
+    $Test,
+
+    [Parameter(ParameterSetName = "Test")]
+    [ValidateSet("Atom", "AtomNg", "Pulsar", "VsCode", "TextMateGrammarTest", "TextMateSharp")]
+    [string]
+    $Tokenizer = "Atom",
+
+    [switch]
+    $NoBuild,
+
+    [switch]
+    $Silent
 )
 
 # Load Helpers
 . .\tools\build-helpers.ps1
 . .\tools\banners.ps1
 
-SyntaxBanner
+function Invoke-Build() {
+    if (-not (npm -v)) {
+        throw 'Requires Node.js - Could not find npm.'
+    }    
+    npm install
 
-if (-not (npm -v)) {
-    throw 'Requires Node.js - Could not find npm.'
-}
-
-npm install
-
-# helper tasks
-function RunBuild() {
-    BuildBanner
+    BuildBanner    
     try {
         Write-Host "Building grammar file(s)..."
         npm run build-grammar
@@ -54,19 +62,65 @@ function RunBuild() {
     }
 }
 
-function RunTests() {
-    $script:ATOM_EXE_PATH = (Get-Command atom).Path
-    if (-not $script:ATOM_EXE_PATH) {
-        throw "Atom not found. Install it from https://atom.io/"
+function Invoke-Tests {
+    param(
+        [Parameter(Mandatory)]
+        [ValidateSet("Atom", "AtomNg", "Pulsar", "VsCode", "TextMateGrammarTest", "TextMateSharp")]
+        [string]
+        $Tokenizer
+    )
+
+    switch ($Tokenizer) {
+        "Atom" {
+            $script:TOKENIZER_EXE_PATH = (Get-Command atom).Path
+            if (-not $script:TOKENIZER_EXE_PATH) {
+                throw "Atom not found. Install it from https://atom.io/"
+            }
+        }
+        "AtomNg" {
+            $script:TOKENIZER_EXE_PATH = (Get-Command atom-ng).Path
+            if (-not $script:TOKENIZER_EXE_PATH) {
+                throw "Atom not found. Install it from https://github.com/Alex313031/atom-ng"
+            }
+        }
+        "Pulsar" {
+            $script:TOKENIZER_EXE_PATH = (Get-Command pulsar).Path
+            if (-not $script:TOKENIZER_EXE_PATH) {
+                throw "Atom not found. Install it from https://pulsar-edit.dev/"
+            }
+        }
+        "VsCode" {
+            throw "Not implemented yet"
+        }
+        "TextMateGrammarTest" {
+            throw "Not implemented yet"
+        }
+        "TextMateSharp" {
+            throw Not implemented yet
+        }
     }
-}
 
-RunBuild
-
-if ($Test) {
-    RunTests
     TestBanner
     RunSpecs
 }
 
-EndBanner
+function Main {
+    SyntaxBanner
+
+    if (-not $NoBuild) {
+        Invoke-Build
+    }
+
+    if ($Test) {
+        Invoke-Tests -Tokenizer $Tokenizer
+    }
+    
+    EndBanner
+}
+
+if ($Silent) {
+    Main 6>$null | Out-Null
+}
+else {
+    Main
+}

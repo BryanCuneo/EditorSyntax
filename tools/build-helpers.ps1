@@ -38,27 +38,36 @@ function ExtractAtom {
 }
 
 filter ParseJasmine {
-    switch -regex ($_) {
-        ^\s+at {
-            ''
+    $line = "$_"
+
+    switch -regex ($line) {
+        # When running the old Electron apps on Linux, they output several
+        # warnings/errors and turn results text red. This regex acts as a
+        # workaround to suppress those and keep the results clear
+        '^(Fontconfig|.*\bWarning: Accessing non-existent property\b|^\(Use `exe --trace-warnings)|^bash:|^\(node:' {
             break
         }
 
-        ^\s+it {
-            $_ -replace '^(\s+)(it)', '$1[-] It'
+        '^\s+at' {
             break
         }
 
-        ^\s+Expected {
-            $_ -replace '^(\s*)(Expected.*?)\s(instead found .*)', "`$1`$2`n`$1`$3"
+        '^\s+it' {
+            $line -replace '^(\s+)(it)', '$1[-] It'
+            break
+        }
+
+        '^\s+Expected' {
+            $line -replace '^(\s*)(Expected.*?)\s(instead found .*)', "`$1`$2`n`$1`$3"
             break
         }
 
         default {
-            $_
+            $line
         }
     }
 }
+
 
 function ExitWithCode {
     param (
@@ -75,7 +84,7 @@ function RunSpecs {
     $specpath = Join-Path . '\spec'
 
     if (Test-Path $specpath) {
-        & $script:ATOM_EXE_PATH --test $specpath *>&1 | ParseJasmine
+        & $script:TOKENIZER_EXE_PATH --test $specpath *>&1 | ParseJasmine
     }
     else {
         throw '.\spec\ not found.'
