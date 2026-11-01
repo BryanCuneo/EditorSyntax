@@ -12,10 +12,13 @@
     "node": "*"
   },
   "dependencies": {
-    "fast-plist": "0.1.2",
-    "atom-grammar-test": "^0.6.3"
+    "atom-grammar-test": "^0.6.3",
+    "fast-plist": "0.1.2"
   },
   "scripts": {
     "build-grammar": "node ./tools/build-grammar.js ./PowerShellSyntax.tmLanguage ./grammars/powershell.tmLanguage.json"
+  },
+  "devDependencies": {
+    "textmate-grammar-test": "^0.7.1"
   }
 }
