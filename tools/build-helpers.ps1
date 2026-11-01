@@ -1,4 +1,4 @@
-function DownloadAtom {
+function Get-Atom {
     Write-Host "Downloading latest Atom release..."
 
     $Source = "https://atom.io/download/windows_zip?channel=stable"
@@ -13,10 +13,10 @@ function DownloadAtom {
 
     Write-Host "Atom download finished..."
 
-    ExtractAtom
+    Invoke-ExtractAtom
 }
 
-function ExtractAtom {
+function Invoke-ExtractAtom {
     Write-Host "Extracting Atom.zip"
 
     $ZipFile = Join-Path (Split-Path $PSScriptRoot -Parent) '\atom.zip'
@@ -37,16 +37,16 @@ function ExtractAtom {
     Write-Host "Atom.zip deleted..."
 }
 
-filter ParseJasmine {
+filter Format-FromJasmine {
     $line = "$_"
 
     switch -regex ($line) {
         # # When running the old Electron apps on Linux, they output several
         # # warnings/errors and turn results text red. This regex acts as a
         # # workaround to suppress those and keep the results clear
-        # '^(Fontconfig|.*\bWarning: Accessing non-existent property\b|^\(Use `exe --trace-warnings)|^bash:|^\(node:' {
-        #     break
-        # }
+        '^Fontconfig|^bash:|^\(node:|^ConsoleReporter|^\(Use' {
+            break
+        }
 
         '^\s+at' {
             break
@@ -69,7 +69,7 @@ filter ParseJasmine {
 }
 
 
-function ExitWithCode {
+function Exit-WithCode {
     param (
         $ExitCode
     )
@@ -78,14 +78,12 @@ function ExitWithCode {
     exit
 }
 
-function RunSpecs {
+function Invoke-Specs {
     Write-Host "Running specs..."
 
     $specpath = Join-Path -Path "." -ChildPath "spec", "powershell-spec.coffee"
-
     if (Test-Path $specpath) {
-        # & $script:TOKENIZER_EXE_PATH --test $specpath *>&1 | ParseJasmine
-        & $script:TOKENIZER_EXE_PATH --test $specpath *>&1
+        & $script:TOKENIZER_EXE_PATH --test $specpath *>&1 | Format-FromJasmine
     }
     else {
         throw '.\spec\ not found.'
@@ -93,7 +91,7 @@ function RunSpecs {
 
     if ($LASTEXITCODE -ne 0) {
         if ($Env:APPVEYOR) {
-            ExitWithCode -exitcode $LASTEXITCODE
+            Exit-WithCode -exitcode $LASTEXITCODE
         }
         else {
             throw "One or more tests failed."

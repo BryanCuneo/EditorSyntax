@@ -25,16 +25,18 @@
         Finished in 0.281 seconds
         2 tests, 5 assertions, 0 failures, 0 skipped
 #>
+[CmdletBinding(DefaultParameterSetName = "Build")]
 param(
     [Parameter(Mandatory, ParameterSetName = "Test")]
     [switch]
     $Test,
 
     [Parameter(ParameterSetName = "Test")]
-    [ValidateSet("Atom", "AtomNg", "Pulsar", "VsCode", "TextMateGrammarTest", "TextMateSharp")]
+    [ValidateSet("Atom", "AtomNg", "Pulsar")]
     [string]
     $Tokenizer = "Atom",
 
+    [Parameter(ParameterSetName = "Test")]
     [switch]
     $NoBuild,
 
@@ -46,13 +48,13 @@ param(
 . .\tools\build-helpers.ps1
 . .\tools\banners.ps1
 
-function Invoke-Build() {
+function Invoke-Build {
     if (-not (npm -v)) {
         throw 'Requires Node.js - Could not find npm.'
-    }    
+    }
     npm install
 
-    BuildBanner    
+    Write-BuildBanner
     try {
         Write-Host "Building grammar file(s)..."
         npm run build-grammar
@@ -65,7 +67,7 @@ function Invoke-Build() {
 function Invoke-Tests {
     param(
         [Parameter(Mandatory)]
-        [ValidateSet("Atom", "AtomNg", "Pulsar", "VsCode", "TextMateGrammarTest", "TextMateSharp")]
+        [ValidateSet("Atom", "AtomNg", "Pulsar")]
         [string]
         $Tokenizer
     )
@@ -89,23 +91,14 @@ function Invoke-Tests {
                 throw "Atom not found. Install it from https://pulsar-edit.dev/"
             }
         }
-        "VsCode" {
-            throw "Not implemented yet"
-        }
-        "TextMateGrammarTest" {
-            throw "Not implemented yet"
-        }
-        "TextMateSharp" {
-            throw Not implemented yet
-        }
     }
 
-    TestBanner
-    RunSpecs
+    Write-TestBanner
+    Invoke-Specs
 }
 
 function Main {
-    SyntaxBanner
+    Write-SyntaxBanner
 
     if (-not $NoBuild) {
         Invoke-Build
@@ -114,8 +107,8 @@ function Main {
     if ($Test) {
         Invoke-Tests -Tokenizer $Tokenizer
     }
-    
-    EndBanner
+
+    Write-EndBanner
 }
 
 if ($Silent) {

@@ -17,9 +17,5 @@
   },
   "scripts": {
     "build-grammar": "node ./tools/build-grammar.js ./PowerShellSyntax.tmLanguage ./grammars/powershell.tmLanguage.json"
-  },
-  "devDependencies": {
-    "textmate-grammar-test": "^0.7.1"
-  },
-  "atomTestRunner": "runners/jasmine2-test-runner"
+  }
 }

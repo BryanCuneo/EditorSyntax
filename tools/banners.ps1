@@ -1,4 +1,4 @@
-function SyntaxBanner {
+function Write-SyntaxBanner {
     Write-Host ' ______    _ _ _             _____             _             ' -ForegroundColor Green
     Write-Host '|  ____|  | (_) |           / ____|           | |            ' -ForegroundColor Green
     Write-Host '| |__   __| |_| |_ ___  _ _| (___  _   _ _ __ | |_ __ ___  __' -ForegroundColor Green
@@ -9,18 +9,18 @@ function SyntaxBanner {
     Write-Host '                                   |___/                     ' -ForegroundColor Green
 }
 
-function BuildBanner {
+function Write-BuildBanner {
     Write-Host '#############################################################' -ForegroundColor Green
     Write-Host '#                       BUILD GRAMMAR                       #' -ForegroundColor Green
     Write-Host '#############################################################' -ForegroundColor Green
 }
 
-function TestBanner {
+function Write-TestBanner {
     Write-Host '#############################################################' -ForegroundColor Green
     Write-Host '#                         RUN TESTS                         #' -ForegroundColor Green
     Write-Host '#############################################################' -ForegroundColor Green
 }
 
-function EndBanner {
+function Write-EndBanner {
     Write-Host '#############################################################' -ForegroundColor Green
 }
