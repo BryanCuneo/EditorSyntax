@@ -5,7 +5,7 @@ param(
     [int]$HowMany = 10
 )
 
-$ALL = @("Atom", "AtomNg", "PulsarLegacy", "Pulsar2", "VsCode", "TextMateGrammarTest", "TextMateSharp")
+$ALL = @("Atom", "AtomNg", "Pulsar1", "Pulsar2", "VsCode", "TextMateGrammarTest", "TextMateSharp")
 
 # Temporarily add the appropriate atomTestRunner setting to package.json for
 # Pulsar. This breaks Atom if it's in the package.json by default, but it's
@@ -14,8 +14,6 @@ function Invoke-Pulsar {
     param(
         [string]$Tokenizer
     )
-    Write-Host "`nHello`n"
-
     if ($Tokenizer -like "Pulsar1") {
         $runner = "jasmine1-test-runner"
     }
@@ -25,19 +23,23 @@ function Invoke-Pulsar {
 
     $package_json = Get-Content -Path "./package.json" | ConvertFrom-Json
     $atom_test_runner = @{
-        Name       = "atomTestRunner"
-        Value      = "runners/$runner"
-        MemberType = "NoteProperty"
+        Name        = "atomTestRunner"
+        Value       = "runners/$runner"
+        MemberType  = "NoteProperty"
+        ErrorAction = "Silent"
     }
     $package_json | Add-Member @atom_test_runner
     $package_json | ConvertTo-JSON | Set-Content -Path "./package.json"
 
-    Measure-Command -Expression { 1..$HowMany | ForEach-Object {
-        .\build.ps1 -Test -Tokenizer "Pulsar" -NoBuild
-    } }
-
-    $package_json.PSObject.Properties.Remove('atomTestRunner')
-    $package_json | ConvertTo-JSON | Set-Content -Path "./package.json"
+    try {
+        Measure-Command -Expression { 1..$HowMany | ForEach-Object {
+            .\build.ps1 -Test -Tokenizer "Pulsar" -NoBuild -Silent
+        } }
+    }
+    finally {
+        $package_json.PSObject.Properties.Remove('atomTestRunner')
+        $package_json | ConvertTo-JSON | Set-Content -Path "./package.json"
+    }
 }
 
 foreach ($t in $ALL) {

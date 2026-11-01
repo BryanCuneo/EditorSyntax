@@ -41,12 +41,12 @@ filter ParseJasmine {
     $line = "$_"
 
     switch -regex ($line) {
-        # When running the old Electron apps on Linux, they output several
-        # warnings/errors and turn results text red. This regex acts as a
-        # workaround to suppress those and keep the results clear
-        '^(Fontconfig|.*\bWarning: Accessing non-existent property\b|^\(Use `exe --trace-warnings)|^bash:|^\(node:' {
-            break
-        }
+        # # When running the old Electron apps on Linux, they output several
+        # # warnings/errors and turn results text red. This regex acts as a
+        # # workaround to suppress those and keep the results clear
+        # '^(Fontconfig|.*\bWarning: Accessing non-existent property\b|^\(Use `exe --trace-warnings)|^bash:|^\(node:' {
+        #     break
+        # }
 
         '^\s+at' {
             break
@@ -81,10 +81,11 @@ function ExitWithCode {
 function RunSpecs {
     Write-Host "Running specs..."
 
-    $specpath = Join-Path . '\spec'
+    $specpath = Join-Path -Path "." -ChildPath "spec", "powershell-spec.coffee"
 
     if (Test-Path $specpath) {
-        & $script:TOKENIZER_EXE_PATH --test $specpath *>&1 | ParseJasmine
+        # & $script:TOKENIZER_EXE_PATH --test $specpath *>&1 | ParseJasmine
+        & $script:TOKENIZER_EXE_PATH --test $specpath *>&1
     }
     else {
         throw '.\spec\ not found.'
