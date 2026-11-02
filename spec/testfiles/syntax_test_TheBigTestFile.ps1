@@ -98,6 +98,7 @@ throw "Do not run this file!"
 #                                     ^^^ keyword.control.powershell
 #                                         ^^    ^^     ^^    ^^      ^ ^ string.unquoted.powershell
 
+#region Done
 # Automatic variables
 $_, $$, $^, $?
 # <- punctuation.definition.variable.powershell
@@ -164,6 +165,7 @@ ${script:variable}
 # ^ storage.modifier.scope.powershell
 #        ^ variable.other.readwrite.powershell
 #                ^ punctuation.section.braces.end.powershell
+#endregion
 
 # Variable properties should be highlighted
 $variable.Name
@@ -171,6 +173,7 @@ $variable.Name
 # ^ variable.other.readwrite.powershell
 #         ^^^^ variable.other.member.powershell
 
+#region Done
 # In double-quoted strings, only the variable should be highlighted, not the property
 "This is my $variable.Name!"
 # <- punctuation.definition.string.begin.powershell string.quoted.double.powershell
@@ -193,6 +196,7 @@ $variable.Name
 #              ^^^^^^^^ variable.other.readwrite.powershell
 #                       ^^^^ variable.other.member.powershell
 #                             ^ punctuation.definition.string.end.powershell
+#endregion
 
 # $ENV:ComputerName should be highlighted
 "This is the name of my computer: $ENV:ComputerName"
@@ -225,11 +229,13 @@ $variable.Name
 #    ^ support.variable.automatic.powershell
 #       ^ support.variable.automatic.powershell
 
+#region Done
 # Single quotes string
 'This is a string'
 # <- punctuation.definition.string.begin.powershell string.quoted.single.powershell
 # ^^^^^^^^^^^^^^^ string.quoted.single.powershell
 #                ^ punctuation.definition.string.end.powershell
+#endregion
 
 # Hashtable
 $properties = @{
