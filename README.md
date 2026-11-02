@@ -1,3 +1,8 @@
+# PLEASE NOTE
+This branch is a test branch for potential replacements for Atom as the tokenizer and test runner. Please see [ATOM_REPLACEMENT-PT1.md](./ATOM_REPLACEMENT-PT1.md).
+
+---
+
 # PowerShell Syntax Definition for Editors
 
 This project establishes the central development and maintenance of syntax definition
