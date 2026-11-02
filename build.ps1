@@ -57,7 +57,7 @@ function Invoke-Build {
     Write-BuildBanner
     try {
         Write-Host "Building grammar file(s)..."
-        npm run build-grammar
+        npm run build:grammar
     }
     catch {
         $PSCmdlet.ThrowTerminatingError($PSItem)
