@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build:grammar": "node ./tools/build-grammar.js ./PowerShellSyntax.tmLanguage ./grammars/powershell.tmLanguage.json",
-    "test:grammar": "textmate-grammar-test \"spec/textmate/**/*.ps1\"",
+    "test:grammar": "textmate-grammar-test \"testfiles/**/*.ps1\"",
     "test": "npm run build:grammar && npm run test:grammar"
   },
   "contributes": {
