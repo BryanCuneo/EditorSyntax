@@ -1,21 +1,40 @@
 {
-  "name": "EditorSyntax",
+  "name": "PowerShell EditorSyntax",
   "license": "MIT",
-  "description": "PowerShell language syntax",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/PowerShell/EditorSyntax.git"
   },
-  "version": "1.0.0",
-  "engines": {
-    "atom": "*",
-    "node": "*"
-  },
-  "dependencies": {
-    "atom-grammar-test": "^0.6.3",
-    "fast-plist": "0.1.2"
-  },
   "scripts": {
-    "build-grammar": "node ./tools/build-grammar.js ./PowerShellSyntax.tmLanguage ./grammars/powershell.tmLanguage.json"
+    "build:grammar": "node ./tools/build-grammar.js ./PowerShellSyntax.tmLanguage ./grammars/powershell.tmLanguage.json",
+    "test:grammar": "textmate-grammar-test \"spec/textmate/**/*.ps1\"",
+    "test": "npm run build:grammar && npm run test:grammar"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "powershell",
+        "extensions": [
+          ".ps1",
+          ".psm1",
+          ".psd1"
+        ]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "powershell",
+        "scopeName": "source.powershell",
+        "path": "./grammars/powershell.tmLanguage.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "textmate-grammar-test": "^0.7.1"
+  },
+  "overrides": {
+    "glob": "14.0.2",
+    "minimatch": "11.0.1"
   }
 }
