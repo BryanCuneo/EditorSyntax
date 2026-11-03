@@ -743,8 +743,6 @@ switch ('this') {
 }
 # <- meta.scriptblock.powershell punctuation.section.braces.end.powershell
 
-#endregion
-
 # Functions and filters
 functioN MyFunction{}
 # <- storage.type.powershell
@@ -945,6 +943,8 @@ function Verb-Noun
 }
 # <- punctuation.section.braces.end.powershell
 
+#endregion
+
 # Class
 class Vehicle {
 # <- storage.type.powershell
@@ -991,6 +991,8 @@ class Vehicle {
 }
 # <- punctuation.section.braces.end.powershell
 
+#region Done
+
 # Control words
 foreach ($item in $collection) {
 # <- keyword.control.powershell
@@ -1001,6 +1003,8 @@ foreach ($item in $collection) {
 #        ^        ^ punctuation.definition.variable.powershell
 }
 # <- punctuation.section.braces.end.powershell
+
+#endregion
 
 try   { }
 # <- keyword.control.powershell

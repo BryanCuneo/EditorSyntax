@@ -1,7 +1,7 @@
-# SYNTAX TEST v1 "source.powershell" "Cmdlets"
+# SYNTAX TEST v1 "source.powershell" "Switch statement"
 # https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/06-flow-control
-
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_switch
+
 switch ("fourteen") {}
 #<------ keyword.control.powershell
 #      ^ punctuation.section.group.begin.powershell
