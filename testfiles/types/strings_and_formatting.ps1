@@ -133,3 +133,16 @@ $str = '$_, $$, $PWD, $HOME, $ShellId'
 #       ^^  ^^  ^^^^ ! support.variable.automatic.powershell
 #                     ^^^^^  ^^^^^^^ ! variable.other.constant.powershell
 #                                    ^ punctuation.definition.string.end.powershell
+
+# https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_quoting_rules#here-strings
+$str = @"
+This is a double-quoted here-string.
+It can have multiple lines, $variables, and $($substatements).
+"@
+#<-- string.quoted.double.heredoc.powershell punctuation.definition.string.end.powershell
+
+$str = @'
+And this is a single-quoted here-string.
+Still can have multiple line, but no $variables or $($substatements).
+'@
+#<-- string.quoted.single.heredoc.powershell punctuation.definition.string.end.powershell

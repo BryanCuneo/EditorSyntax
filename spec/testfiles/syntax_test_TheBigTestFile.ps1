@@ -420,6 +420,8 @@ $a3[1..2]
     "This 'string' is nice."
 #   ^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.powershell
 
+#region Done
+
 # Double quoted here-string, white space at end of start token allowed
 @"
 # <- string.quoted.double.heredoc.powershell
@@ -532,6 +534,8 @@ There is no @platting here!
 #   ^^^^^ constant.numeric.hex.powershell
     -0x20
 #   ^^^^^ constant.numeric.hex.powershell
+
+#endregion
 
 # Types
 [string]
