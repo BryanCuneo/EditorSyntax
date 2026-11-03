@@ -1,4 +1,4 @@
-# SYNTAX TEST v1 "source.powershell" "User-defined variables and their scope modifiers"
+# SYNTAX TEST v1 "source.powershell" "Strings and string formatting"
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_quoting_rules
 # https://learn.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-string-substitutions
 
