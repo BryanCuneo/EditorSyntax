@@ -34,8 +34,8 @@
     "textmate-grammar-test": "^0.7.1"
   },
   "overrides": {
-    "glob": "14.0.2",
-    "minimatch": "11.0.1"
+    "glob": "^14.0.2",
+    "minimatch": "^11.0.1"
   },
   "dependencies": {
     "fast-plist": "^0.1.3"
