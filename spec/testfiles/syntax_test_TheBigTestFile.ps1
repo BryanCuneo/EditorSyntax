@@ -638,8 +638,6 @@ something.cmd
 # <- support.function.powershell
 øyvind.com # this should also highlight - TODO
 
-#endregion
-
 # switch
 switch ("fourteen") {}
 # <- keyword.control.powershell
@@ -744,6 +742,8 @@ switch ('this') {
 #            ^ meta.scriptblock.powershell punctuation.section.braces.end.powershell
 }
 # <- meta.scriptblock.powershell punctuation.section.braces.end.powershell
+
+#endregion
 
 # Functions and filters
 functioN MyFunction{}
