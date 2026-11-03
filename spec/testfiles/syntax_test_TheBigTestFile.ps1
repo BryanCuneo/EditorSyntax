@@ -531,8 +531,6 @@ There is no @platting here!
     -0x20
 #   ^^^^^ constant.numeric.hex.powershell
 
-#endregion
-
 # Types
 [string]
 # <- punctuation.section.bracket.begin.powershell
@@ -639,6 +637,8 @@ ls *.ps1 -recurse
 something.cmd
 # <- support.function.powershell
 øyvind.com # this should also highlight - TODO
+
+#endregion
 
 # switch
 switch ("fourteen") {}
