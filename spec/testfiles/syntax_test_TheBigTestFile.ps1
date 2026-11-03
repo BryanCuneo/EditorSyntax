@@ -943,7 +943,7 @@ function Verb-Noun
 }
 # <- punctuation.section.braces.end.powershell
 
-#endregion
+
 
 # Class
 class Vehicle {
@@ -990,8 +990,6 @@ class Vehicle {
     # <- punctuation.section.braces.end.powershell
 }
 # <- punctuation.section.braces.end.powershell
-
-#region Done
 
 # Control words
 foreach ($item in $collection) {
