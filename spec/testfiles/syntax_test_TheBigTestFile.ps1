@@ -381,6 +381,8 @@ $a3[1..2]
 #             ^ punctuation.section.group.end.powershell
 #                   ^ punctuation.section.bracket.end.powershell
 
+#region Done
+
 # Single quoted strings
     'This is a single quoted string.'
 #   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.single.powershell
@@ -419,8 +421,6 @@ $a3[1..2]
 #                      ^ punctuation.section.group.end.powershell
     "This 'string' is nice."
 #   ^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.powershell
-
-#region Done
 
 # Double quoted here-string, white space at end of start token allowed
 @"
