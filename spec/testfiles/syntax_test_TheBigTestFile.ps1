@@ -1004,8 +1004,6 @@ foreach ($item in $collection) {
 }
 # <- punctuation.section.braces.end.powershell
 
-#endregion
-
 try   { }
 # <- keyword.control.powershell
 #     ^ punctuation.section.braces.begin.powershell
@@ -1014,6 +1012,8 @@ catch { }
 # <- keyword.control.powershell
 #     ^ punctuation.section.braces.begin.powershell
 #       ^ punctuation.section.braces.end.powershell
+
+#endregion
 
 # Reserved words
 Configuration Crazyness {
