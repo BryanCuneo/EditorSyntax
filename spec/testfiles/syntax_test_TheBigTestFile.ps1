@@ -302,8 +302,6 @@ $sb = {
 }
 # <- punctuation.section.braces.end.powershell
 
-#endregion
-
 # Arrays
 $a1 = @(1,2,3,4)
 # <- punctuation.definition.variable.powershell variable.other.readwrite.powershell
@@ -380,8 +378,6 @@ $a3[1..2]
 #            ^ constant.numeric.integer.powershell
 #             ^ punctuation.section.group.end.powershell
 #                   ^ punctuation.section.bracket.end.powershell
-
-#region Done
 
 # Single quoted strings
     'This is a single quoted string.'
