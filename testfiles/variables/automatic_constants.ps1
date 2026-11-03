@@ -2,9 +2,10 @@
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables
 
 $ExecutionContext, $Host, $HOME, $PID, $PSHOME, $PSVersionTable, $ShellId
-#^^^^^^^^^^^^^^^^   ^^^^   ^^^^   ^^^   ^^^^^^   ^^^^^^^^^^^^^^   ^^^^^^^ variable.other.constant.powershell
 # <- punctuation.definition.variable.powershell
+# <----------------- variable.other.constant.powershell
 #                  ^      ^      ^     ^        ^                ^ punctuation.definition.variable.powershell
+#                  ^^^^^  ^^^^^  ^^^^  ^^^^^^^  ^^^^^^^^^^^^^^^  ^^^^^^^^ variable.other.constant.powershell
 
 <#
 $ConsoleFileName
