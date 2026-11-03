@@ -5,13 +5,14 @@ class Vehicle {
 #<- storage.type.powershell
 #     ^^^^^^^ entity.name.function
 #             ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
-    Vehicle() {}
+    Vehicle() { }
 #   ^^^^^^^^^^^^ meta.scriptblock.powershell
 #          ^ punctuation.section.group.begin.powershell
 #          ^^ meta.group.simple.subexpression.powershell
 #           ^ punctuation.section.group.end.powershell
 #             ^ punctuation.section.braces.begin.powershell
-#              ^ punctuation.section.braces.end.powershell
+#             ^^^ meta.scriptblock.powershell
+#               ^ punctuation.section.braces.end.powershell
     Vehicle([string]$Owner) {
 #   ^^^^^^^^^^^^^^^^^^^^^^^^^ meta.scriptblock.powershell
 #          ^ punctuation.section.group.begin.powershell

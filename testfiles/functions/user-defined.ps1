@@ -1,46 +1,62 @@
 # SYNTAX TEST v1 "source.powershell" "User-defined functions"
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_functions
 
-functioN MyFunction{}
+functioN MyFunction{ }
 #<-------- storage.type.powershell
 #        ^^^^^^^^^^ entity.name.function.powershell
 #                  ^ punctuation.section.braces.begin.powershell
-#                   ^ punctuation.section.braces.end.powershell
-function My-Function         {}
+#                  ^^^ meta.scriptblock.powershell
+#                    ^ punctuation.section.braces.end.powershell
+
+function My-Function         { }
 #<-------- storage.type.powershell
 #        ^^^^^^^^^^^ entity.name.function.powershell
 #                            ^ punctuation.section.braces.begin.powershell
-#                             ^ punctuation.section.braces.end.powershell
-Function My.Function{}
+#                            ^^^ meta.scriptblock.powershell
+#                              ^ punctuation.section.braces.end.powershell
+
+Function My.Function{ }
 #<-------- storage.type.powershell
 #        ^^^^^^^^^^^ entity.name.function.powershell
 #                   ^ punctuation.section.braces.begin.powershell
-#                    ^ punctuation.section.braces.end.powershell
-function My-Function.Other{}
+#                   ^^^ meta.scriptblock.powershell
+#                     ^ punctuation.section.braces.end.powershell
+
+function My-Function.Other{ }
 #<-------- storage.type.powershell
 #        ^^^^^^^^^^^^^^^^^ entity.name.function.powershell
 #                         ^ punctuation.section.braces.begin.powershell
-#                          ^ punctuation.section.braces.end.powershell
-function Some.other.function{}
+#                         ^^^ meta.scriptblock.powershell
+#                           ^ punctuation.section.braces.end.powershell
+
+function Some.other.function{ }
 #<-------- storage.type.powershell
 #        ^^^^^^^^^^^^^^^^^^^ entity.name.function.powershell
 #                           ^ punctuation.section.braces.begin.powershell
-#                            ^ punctuation.section.braces.end.powershell
-FUNCTION MyFunction2 {}
+#                           ^^^ meta.scriptblock.powershell
+#                             ^ punctuation.section.braces.end.powershell
+
+FUNCTION MyFunction2 { }
 #<-------- storage.type.powershell
 #        ^^^^^^^^^^^ entity.name.function.powershell
 #                    ^ punctuation.section.braces.begin.powershell
-#                     ^ punctuation.section.braces.end.powershell
+#                    ^^^ meta.scriptblock.powershell
+#                      ^ punctuation.section.braces.end.powershell
+
 function New-File { }
 #<-------- storage.type.powershell
 #        ^^^^^^^^ entity.name.function.powershell
 #                 ^ punctuation.section.braces.begin.powershell
+#                 ^^^ meta.scriptblock.powershell
 #                   ^ punctuation.section.braces.end.powershell
+
 function New-File ($Name) { }
 #<-------- storage.type.powershell
 #        ^^^^^^^^ entity.name.function.powershell
 #                         ^ punctuation.section.braces.begin.powershell
+#                         ^^^ meta.scriptblock.powershell
 #                           ^ punctuation.section.braces.end.powershell
+
 function NewFile($Name) { }
 #<-------- storage.type.powershell
 #        ^^^^^^^ entity.name.function.powershell
@@ -49,6 +65,7 @@ function NewFile($Name) { }
 #                   ^ variable.other.readwrite.powershell
 #                     ^ punctuation.section.group.end.powershell
 #                       ^ punctuation.section.braces.begin.powershell
+#                       ^^^ meta.scriptblock.powershell
 #                         ^ punctuation.section.braces.end.powershell
 
 # Note that the # in the path should highlight as a comment!
@@ -62,15 +79,16 @@ function Test-Drive([string]$roman) {
 #                           ^ punctuation.definition.variable.powershell
 #                            ^ variable.other.readwrite.powershell
 #                                 ^ punctuation.section.group.end.powershell
-#                                   ^ punctuation.section.braces.begin.powershell
+#                                   ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
     $roman | c:\users\Me\Documents\Programming\F#\test.exe $roman
+#   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.scriptblock.powershell
 #   ^ punctuation.definition.variable.powershell
-#    ^ variable.other.readwrite.powershell
+#    ^^^^^ variable.other.readwrite.powershell
 #          ^ keyword.operator.other.powershell
 #                                               ^ punctuation.definition.comment.powershell
 #                                                       ^  ^ comment.line.powershell
 }
-#<- punctuation.section.braces.end.powershell
+#<- meta.scriptblock.powershell punctuation.section.braces.end.powershell
 
 function Verb-Noun
 #<- meta.function.powershell storage.type.powershell
@@ -82,10 +100,10 @@ function Verb-Noun
     Param
 #   ^^^^^ keyword.control.powershell
     (
-#   ^ punctuation.section.group.begin.powershell
+#   ^ meta.scriptblock.powershell punctuation.section.group.begin.powershell
         # Param1 help description
 #       ^ punctuation.definition.comment.powershell
-#       ^^^^^^^^^^^^^^^^^^^^^^^^^ comment.line.powershell
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^ meta.scriptblock.powershell comment.line.powershell
         [Parameter(Mandatory=$true,
 #       ^ punctuation.section.bracket.begin.powershell
 #       ^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.scriptblock.powershell meta.group.simple.subexpression.powershell meta.attribute.powershell
