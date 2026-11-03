@@ -233,8 +233,6 @@ $variable.Name
 # ^^^^^^^^^^^^^^^ string.quoted.single.powershell
 #                ^ punctuation.definition.string.end.powershell
 
-#endregion
-
 # Hashtable
 $properties = @{
 # <- punctuation.definition.variable.powershell
@@ -270,6 +268,8 @@ $properties = @{
     # <- punctuation.section.braces.end.powershell
 }
 # <- punctuation.section.braces.end.powershell
+
+#endregion
 
 # Spatting
     Invoke-Something @properties
