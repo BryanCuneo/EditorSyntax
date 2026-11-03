@@ -2,7 +2,7 @@
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_splatting
 
 $hashtable = @{
-# <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
+#<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^^^^^^^ variable.other.readwrite.powershell
 #          ^ keyword.operator.assignment.powershell
 #            ^ meta.hashtable.powershell keyword.other.hashtable.begin.powershell
@@ -47,7 +47,7 @@ $hashtable = @{
     }
 #   ^ meta.hashtable.powershell punctuation.section.braces.end.powershell
 }
-# <- meta.hashtable.powershell punctuation.section.braces.end.powershell
+#<- meta.hashtable.powershell punctuation.section.braces.end.powershell
 
 <#
     Fix ordered

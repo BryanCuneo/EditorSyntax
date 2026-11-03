@@ -3,7 +3,7 @@
 # https://learn.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-string-substitutions
 
 $str = "This is a double-quoted string"
-# <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
+#<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^ variable.other.readwrite.powershell
 #    ^ keyword.operator.assignment.powershell
 #      ^ punctuation.definition.string.begin.powershell
@@ -11,7 +11,7 @@ $str = "This is a double-quoted string"
 #                                     ^ punctuation.definition.string.end.powershell
 
 $str = "This has a $variable in it"
-# <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
+#<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^               ^^^^^^^^^ variable.other.readwrite.powershell
 #    ^ keyword.operator.assignment.powershell
 #      ^ punctuation.definition.string.begin.powershell
@@ -21,7 +21,7 @@ $str = "This has a $variable in it"
 
 
 $str = "This is also a ${$variable}"
-# <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
+#<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^                   ^^^^^^^^^^^^ variable.other.readwrite.powershell
 #    ^ keyword.operator.assignment.powershell
 #      ^ punctuation.definition.string.begin.powershell
@@ -32,7 +32,7 @@ $str = "This is also a ${$variable}"
 #                                  ^ punctuation.definition.string.end.powershell
 
 $str = "This $variable.member won't work :("
-# <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
+#<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^         ^^^^^^^^^ variable.other.readwrite.powershell
 #    ^ keyword.operator.assignment.powershell
 #      ^ punctuation.definition.string.begin.powershell
@@ -42,7 +42,7 @@ $str = "This $variable.member won't work :("
 #                                          ^ punctuation.definition.string.end.powershell
 
 $str = "But this $($variable.member) will :)"
-# <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
+#<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^               ^^^^^^^^^^^^^^^^ variable.other.readwrite.powershell
 #    ^ keyword.operator.assignment.powershell
 #      ^ punctuation.definition.string.begin.powershell
@@ -58,7 +58,7 @@ $str = "But this $($variable.member) will :)"
 
 
 $str = "This whole thing should be a variable: $Script:variable"
-# <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
+#<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^                                           ^^^^^^^^^^^^^^^^ variable.other.readwrite.powershell
 #    ^ keyword.operator.assignment.powershell
 #      ^ punctuation.definition.string.begin.powershell
@@ -70,7 +70,7 @@ $str = "This whole thing should be a variable: $Script:variable"
 
 
 $str = "So should this: ${$Global:variable}"
-# <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
+#<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^                    ^^^^^^^^^^^^^^^^^^^ variable.other.readwrite.powershell
 #    ^ keyword.operator.assignment.powershell
 #      ^ punctuation.definition.string.begin.powershell
@@ -82,7 +82,7 @@ $str = "So should this: ${$Global:variable}"
 
 
 $str = 'This is a single-quoted string'
-# <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
+#<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^ variable.other.readwrite.powershell
 #    ^ keyword.operator.assignment.powershell
 #      ^ punctuation.definition.string.begin.powershell
@@ -91,7 +91,7 @@ $str = 'This is a single-quoted string'
 
 
 $str = "Splatting doesn't work in @variable strings"
-# <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
+#<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^ variable.other.readwrite.powershell
 #    ^ keyword.operator.assignment.powershell
 #      ^ punctuation.definition.string.begin.powershell
@@ -101,7 +101,7 @@ $str = "Splatting doesn't work in @variable strings"
 #                                                  ^ punctuation.definition.string.end.powershell
 
 $str = 'Or in @variable strings'
-# <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
+#<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^ variable.other.readwrite.powershell
 #    ^ keyword.operator.assignment.powershell
 #      ^ punctuation.definition.string.begin.powershell
@@ -113,7 +113,7 @@ $str = 'Or in @variable strings'
 # Confirm automatic variables and constants work in double-quoted strings but
 # not single-quoted strings
 $str = "$_, $$, $PWD, $HOME, $ShellId"
-# <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
+#<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^ variable.other.readwrite.powershell
 #    ^ keyword.operator.assignment.powershell
 #      ^ punctuation.definition.string.begin.powershell
@@ -125,7 +125,7 @@ $str = "$_, $$, $PWD, $HOME, $ShellId"
 
 
 $str = '$_, $$, $PWD, $HOME, $ShellId'
-# <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
+#<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^ variable.other.readwrite.powershell
 #    ^ keyword.operator.assignment.powershell
 #      ^ punctuation.definition.string.begin.powershell

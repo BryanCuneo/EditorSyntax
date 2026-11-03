@@ -2,8 +2,8 @@
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables
 
 $$, $?, $^, $_
-# <- punctuation.definition.variable.powershell
-# <~- support.variable.automatic.powershell
+#<- punctuation.definition.variable.powershell
+#<~- support.variable.automatic.powershell
 #^ ! punctuation.definition.variable.powershell
 #   ^   ^   ^ punctuation.definition.variable.powershell
 #   ^^  ^^  ^^ support.variable.automatic.powershell
@@ -11,8 +11,8 @@ $$, $?, $^, $_
 
 
 $args, $Error, $foreach
-# <- punctuation.definition.variable.powershell
-# <----- support.variable.automatic.powershell
+#<- punctuation.definition.variable.powershell
+#<----- support.variable.automatic.powershell
 #      ^       ^ punctuation.definition.variable.powershell
 #      ^^^^^^  ^^^^^^^^ support.variable.automatic.powershell
 
