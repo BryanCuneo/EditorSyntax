@@ -4,6 +4,7 @@
 $$, $?, $^, $_
 #   ^   ^   ^ punctuation.definition.variable.powershell
 #    ^   ^   ^ support.variable.automatic.powershell
+#^ ! punctuation.definition.variable.powershell
 # <- punctuation.definition.variable.powershell
 # <~- support.variable.automatic.powershell
 

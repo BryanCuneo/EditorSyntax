@@ -12,6 +12,18 @@ ${variable}
 #         ^ punctuation.section.braces.end.powershell
 # <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 
+$variable.member
+#^^^^^^^^^^^^^^^ variable.other.readwrite.powershell
+#        ^^^^^^^ variable.other.member.powershell
+# <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
+
+${variable}.member
+#^^^^^^^^^^^^^^^^^ variable.other.readwrite.powershell
+#          ^^^^^^^ variable.other.member.powershell
+#^ punctuation.section.braces.begin.powershell
+#         ^ punctuation.section.braces.end.powershell
+# <- variable.other.readwrite.powershell punctuation.definition.variable.powershell
+
 $Script:variable
 #^^^^^^ storage.modifier.scope.powershell
 #      ^^^^^^^^^ variable.other.readwrite.powershell
@@ -39,7 +51,7 @@ $Env:COMPUTERNAME
  $Private:variable
  $Using:variable
  $Workflow:variable
- 
+
  $Alias:variable
  $Env:variable
  $Function:variable
