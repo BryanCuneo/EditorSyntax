@@ -269,8 +269,6 @@ $properties = @{
 }
 # <- punctuation.section.braces.end.powershell
 
-#endregion
-
 # Spatting
     Invoke-Something @properties
 #   ^^^^^^^^^^^^^^^^ support.function.powershell
@@ -303,6 +301,8 @@ $sb = {
 #                     ^ variable.other.readwrite.powershell
 }
 # <- punctuation.section.braces.end.powershell
+
+#endregion
 
 # Arrays
 $a1 = @(1,2,3,4)
