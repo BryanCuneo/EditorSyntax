@@ -1011,7 +1011,7 @@ catch { }
 #     ^ punctuation.section.braces.begin.powershell
 #       ^ punctuation.section.braces.end.powershell
 
-#endregion
+
 
 # Reserved words
 Configuration Crazyness {
@@ -1024,6 +1024,7 @@ Configuration Crazyness {
     # <- punctuation.section.braces.end.powershell
 }
 # <- punctuation.section.braces.end.powershell
+
 
 # Redirection
 notepad.exe > log.txt
@@ -1050,6 +1051,8 @@ notepad.exe 6>&1
 notepad.exe 2>&1> log.txt
 # <- support.function.powershell
 #           ^^^^^ keyword.operator.redirection.powershell
+
+#endregion
 
 # Operators
 if (10 -cgt 100) { }
