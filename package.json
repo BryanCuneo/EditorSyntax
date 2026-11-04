@@ -9,6 +9,7 @@
   "scripts": {
     "build": "node ./tools/build-grammar.js ./PowerShellSyntax.tmLanguage ./grammars/powershell.tmLanguage.json",
     "test": "textmate-grammar-test \"testfiles/**/*.ps1\"",
+    "examples": "pwsh -NoLogo -NoProfile -File ./tools/generate-examples.ps1",
     "full": "npm run build && npm run test"
   },
   "contributes": {
