@@ -53,6 +53,8 @@ function New-File { }
 function New-File ($Name) { }
 #<-------- storage.type.powershell
 #        ^^^^^^^^ entity.name.function.powershell
+#                  ^ punctuation.definition.variable.powershell
+#                  ^^^^^ variable.other.readwrite.powershell
 #                         ^ punctuation.section.braces.begin.powershell
 #                         ^^^ meta.scriptblock.powershell
 #                           ^ punctuation.section.braces.end.powershell
@@ -62,7 +64,7 @@ function NewFile($Name) { }
 #        ^^^^^^^ entity.name.function.powershell
 #               ^ punctuation.section.group.begin.powershell
 #                ^ punctuation.definition.variable.powershell
-#                   ^ variable.other.readwrite.powershell
+#                ^^^^^ variable.other.readwrite.powershell
 #                     ^ punctuation.section.group.end.powershell
 #                       ^ punctuation.section.braces.begin.powershell
 #                       ^^^ meta.scriptblock.powershell
@@ -77,7 +79,7 @@ function Test-Drive([string]$roman) {
 #                    ^^^^^^ storage.type.powershell
 #                          ^ punctuation.section.bracket.end.powershell
 #                           ^ punctuation.definition.variable.powershell
-#                            ^ variable.other.readwrite.powershell
+#                           ^^^^^^ variable.other.readwrite.powershell
 #                                 ^ punctuation.section.group.end.powershell
 #                                   ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
     $roman | c:\users\Me\Documents\Programming\F#\test.exe $roman

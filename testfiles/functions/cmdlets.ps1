@@ -52,14 +52,15 @@ Invoke-Something -p1 v2 -p2 30 | Invoke-Something -switch
 Invoke-Something -p1 {
 #<---------------- support.function.powershell
 #                ^ keyword.operator.assignment.powershell
-#                    ^ punctuation.section.braces.begin.powershell
+#                    ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
     Invoke-Something -foobar:$true
+#   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.scriptblock.powershell
 #   ^ support.function.powershell
 #                    ^ keyword.operator.assignment.powershell
 #                            ^ punctuation.definition.variable.powershell
 #                             ^^^^ constant.language.powershell
 } | Invoke-Something
-#<- punctuation.section.braces.end.powershell
+#<- meta.scriptblock.powershell punctuation.section.braces.end.powershell
 # ^ keyword.operator.other.powershell
 #   ^^^^^^^^^^^^^^^^ support.function.powershell
 
