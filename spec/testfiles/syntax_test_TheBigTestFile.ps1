@@ -1,4 +1,6 @@
 # SYNTAX TEST "source.powershell"
+
+#region Done
 using namespace System.Management.Automation
 # <- keyword.control.using.powershell
 #     ^ keyword.other.powershell
@@ -97,8 +99,6 @@ throw "Do not run this file!"
 #          ^             ^ keyword.operator.assignment.powershell
 #                                     ^^^ keyword.control.powershell
 #                                         ^^    ^^     ^^    ^^      ^ ^ string.unquoted.powershell
-
-#region Done
 
 # Automatic variables
 $_, $$, $^, $?
