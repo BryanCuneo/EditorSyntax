@@ -1,8 +1,3 @@
-# PLEASE NOTE
-This branch is a test branch for a new test runner system. Please see [ATOM_REPLACEMENT-PT2.md](./ATOM_REPLACEMENT-PT2.md).
-
----
-
 # PowerShell Syntax Definition for Editors
 
 This project establishes the central development and maintenance of syntax definition
