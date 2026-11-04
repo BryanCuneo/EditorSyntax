@@ -22,7 +22,7 @@ Invoke-Something @properties
 #                    ^ punctuation.definition.variable.powershell
 #                     ^^^^^^^^^^ variable.other.readwrite.powershell
 }
-# <- meta.scriptblock.powershell punctuation.section.braces.end.powershell
+#<- meta.scriptblock.powershell punctuation.section.braces.end.powershell
 
 $sb = {
 #<- variable.other.readwrite.powershell punctuation.definition.variable.powershell

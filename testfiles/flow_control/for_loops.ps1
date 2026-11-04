@@ -16,6 +16,27 @@ foreach ($item in $collection) {
 }
 #<- punctuation.section.braces.end.powershell
 
+@("any","array","has").foreach({ $_ })
+#<- keyword.other.array.begin.powershell
+#^ punctuation.section.group.begin.powershell
+#^^^^^^^^^^^^^^^^^^^^^ meta.group.array-expression.powershell
+#                    ^ punctuation.section.group.end.powershell
+#                      ^^^^^^^ keyword.control.powershell
+#                             ^^^^^^^^ meta.group.simple.subexpression.powershell
+#                              ^^^^^^ meta.scriptblock.powershell
+#                                ^ support.variable.automatic.powershell punctuation.definition.variable.powershell
+#                                 ^ support.variable.automatic.powershell
+
+@('any','array','has').foreach{ $_ }
+#<- keyword.other.array.begin.powershell
+#^ punctuation.section.group.begin.powershell
+#^^^^^^^^^^^^^^^^^^^^^ meta.group.array-expression.powershell
+#                    ^ punctuation.section.group.end.powershell
+#                      ^^^^^^^ keyword.control.powershell
+#                             ^^^^^^ meta.scriptblock.powershell
+#                               ^ support.variable.automatic.powershell punctuation.definition.variable.powershell
+#                                ^ support.variable.automatic.powershell
+
 <#
 for
 ForEach-Object

@@ -64,6 +64,10 @@ $str = 'But single quotes ''break up'' the string unless escaped'
 #                         ^^        ^^ constant.character.escape.powershell ! punctuation.definition.string.begin.powershell punctuation.definition.string.end.powershell
 #                                                               ^ punctuation.definition.string.end.powershell
 
+'But here they''re not escape chars: `", `n, `$, `b, `"'
+#             ^^ constant.character.escape.powershell
+#                                    ^^  ^^  ^^  ^^  ^^ ! constant.character.escape.powershell
+
 $str = 'Splatting does not work in single-quoted @variable strings'
 #<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^ variable.other.readwrite.powershell

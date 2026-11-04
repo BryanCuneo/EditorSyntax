@@ -148,26 +148,30 @@ function Verb-Noun
 #                                                      ^ punctuation.section.group.end.powershell
 #                                                       ^ punctuation.section.bracket.end.powershell
         [ValidateNotNullOrEmpty()]
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.scriptblock.powershell
 #       ^ punctuation.section.bracket.begin.powershell
-#        ^ support.function.attribute.powershell
+#        ^^^^^^^^^^^^^^^^^^^^^^ support.function.attribute.powershell
 #                              ^ punctuation.section.group.begin.powershell
 #                               ^ punctuation.section.group.end.powershell
 #                                ^ punctuation.section.bracket.end.powershell
         [ValidateNotNull()]
+#       ^^^^^^^^^^^^^^^^^^^ meta.scriptblock.powershell
 #       ^ punctuation.section.bracket.begin.powershell
-#        ^ support.function.attribute.powershell
+#        ^^^^^^^^^^^^^^^ support.function.attribute.powershell
 #                       ^ punctuation.section.group.begin.powershell
 #                        ^ punctuation.section.group.end.powershell
 #                         ^ punctuation.section.bracket.end.powershell
         [ValidateNotNullOrEmpty()]
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.scriptblock.powershell
 #       ^ punctuation.section.bracket.begin.powershell
-#        ^ support.function.attribute.powershell
+#        ^^^^^^^^^^^^^^^^^^^^^^ support.function.attribute.powershell
 #                              ^ punctuation.section.group.begin.powershell
 #                               ^ punctuation.section.group.end.powershell
 #                                ^ punctuation.section.bracket.end.powershell
         [ValidateCount(0,5)]
+#       ^^^^^^^^^^^^^^^^^^^^ meta.scriptblock.powershell
 #       ^ punctuation.section.bracket.begin.powershell
-#        ^ support.function.attribute.powershell
+#        ^^^^^^^^^^^^^ support.function.attribute.powershell
 #                     ^ punctuation.section.group.begin.powershell
 #                      ^ constant.numeric.integer.powershell
 #                       ^ keyword.operator.other.powershell
@@ -175,8 +179,9 @@ function Verb-Noun
 #                         ^ punctuation.section.group.end.powershell
 #                          ^ punctuation.section.bracket.end.powershell
         [ValidateSet("sun", "moon", "earth")]
+#       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.scriptblock.powershell
 #       ^ punctuation.section.bracket.begin.powershell
-#        ^ support.function.attribute.powershell
+#        ^^^^^^^^^^^ support.function.attribute.powershell
 #                   ^ punctuation.section.group.begin.powershell
 #                    ^^^^ string.quoted.double.powershell
 #                         ^ keyword.operator.other.powershell
@@ -186,8 +191,9 @@ function Verb-Noun
 #                                          ^ punctuation.section.group.end.powershell
 #                                           ^ punctuation.section.bracket.end.powershell
         [Alias("p1")]
+#       ^^^^^^^^^^^^^ meta.scriptblock.powershell
 #       ^ punctuation.section.bracket.begin.powershell
-#         ^ support.function.attribute.powershell
+#        ^^^^^ support.function.attribute.powershell
 #             ^ punctuation.section.group.begin.powershell
 #              ^^^^ string.quoted.double.powershell
 #                  ^ punctuation.section.group.end.powershell
@@ -204,7 +210,7 @@ function Verb-Noun
 }
 #<- punctuation.section.braces.end.powershell
 
-#region syntax_test_Function.ps1
+#region formerly in syntax_test_Function.ps1
 
 using module Microsoft.PowerShell.Management
 #<----- keyword.control.using.powershell
@@ -275,6 +281,7 @@ function Verb-Noun {
 #        ^^^^^^^^^ meta.function.powershell entity.name.function.powershell
 #                  ^ meta.scriptblock.powershell punctuation.section.braces.begin.powershell
     [CmdletBinding(DefaultParameterSetName  = 'Parameter Set 1',
+#   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.attribute.powershell
 #   ^ punctuation.section.bracket.begin.powershell
 #     ^ support.function.attribute.powershell
 #                 ^ punctuation.section.group.begin.powershell
@@ -282,20 +289,24 @@ function Verb-Noun {
 #                                           ^ keyword.operator.assignment.powershell
 #                                             ^ string.quoted.single.powershell
                    SupportsShouldProcess    = $true,
+#                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.attribute.powershell
 #                  ^^^^^^^^^^^^^^^^^^^^^ variable.parameter.attribute.powershell
 #                                           ^ keyword.operator.assignment.powershell
 #                                             ^ punctuation.definition.variable.powershell
 #                                              ^^^^ constant.language.powershell
                    PositionalBinding        = $false,
+#                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.attribute.powershell
 #                  ^^^^^^^^^^^^^^^^^ variable.parameter.attribute.powershell
 #                                           ^ keyword.operator.assignment.powershell
 #                                             ^ punctuation.definition.variable.powershell
 #                                              ^^^^^ constant.language.powershell
                    HelpUri                  = 'http://www.microsoft.com/',
+#                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.attribute.powershell
 #                  ^^^^^^^ variable.parameter.attribute.powershell
 #                                           ^ keyword.operator.assignment.powershell
 #                                              ^ string.quoted.single.powershell
                    ConfirmImpact            = 'Medium')]
+#                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.attribute.powershell
 #                  ^^^^^^^^^^^^^ variable.parameter.attribute.powershell
                 #                           ^ keyword.operator.assignment.powershell
                 #                              ^ string.quoted.single.powershell

@@ -93,6 +93,10 @@ $str = "But double quotes ""break up"" the string unless escaped"
 #                         ^^        ^^ constant.character.escape.powershell ! punctuation.definition.string.begin.powershell punctuation.definition.string.end.powershell
 #                                                               ^ punctuation.definition.string.end.powershell
 
+"Escaped chars: `", `n, `$, `b, `t, `e, `u{10ffff}, `""
+#<------------------------------------------------------- string.quoted.double.powershell
+#               ^^  ^^  ^^  ^^  ^^  ^^  ^^^^^^^^^^  ^^ constant.character.escape.powershell
+
 $str = "Splatting does not work in double-quoted @variable strings"
 #<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^ variable.other.readwrite.powershell
