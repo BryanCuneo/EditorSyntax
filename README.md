@@ -6,70 +6,48 @@ files for the PowerShell language used by editors that leverage the XML version 
 
 Currently this syntax definition is used in the following editors and extensions:
 
-- [Visual Studio Code](https://github.com/Microsoft/vscode) by Microsoft
-- [PowerShell Package for Sublime Text](https://github.com/SublimeText/PowerShell) by [Guillermo López-Anglada](https://github.com/guillermooo)
-- [language-powershell for Atom](https://github.com/jugglingnutcase/language-powershell) by [James Sconfitto](https://github.com/jugglingnutcase/)
+| Editor | Extension | Developer |
+|--- |--- |--- |
+| [Visual Studio Code](https://github.com/Microsoft/vscode) | [PowerShell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell) | [Microsoft](https://marketplace.visualstudio.com/publishers/Microsoft) |
+| [Pulsar](https://pulsar-edit.dev/) | [language-powershell](https://packages.pulsar-edit.dev/packages/language-powershell) | [James Sconfitto](https://github.com/jugglingnutcase/) |
 
 In the future we may find a more common syntax that allows us to generate syntax
 definitions for editors that don't leverage the TextMate format.
 
 ## Status
 
-We are starting with the current state of the TextMate grammar that is being used in
-both VS Code and Sublime Text.  There are a number of existing issues with the grammar
-that we need to track down and fix.  Please see [issue #1](https://github.com/PowerShell/EditorSyntax/issues/1)
-for more details.
+This is a WIP branch containing new tooling.
 
+## Install Dependencies, Build, and Test
 ### Prerequisites
 
-- Node.JS, >= 8.9.1
-- Atom text editor (tests)
+- Node.JS - tested on the current LTS (26.x at the time of writing) but may work on other versions.
 
-### Build (build.ps1)
+### Install dependencies
 
-1. Run `build.ps1` to generate the grammar.
+```Shell
+PS> npm install
+```
 
-    ```
-    PS> .\build.ps1
-    ```
+### Rebuild the grammar and run all tests
+```Shell
+PS> npm run full
+```
 
-2. The .json file will be generated in `./grammars/` at the root of the project.
+### Just build the grammar
+```Shell
+PS> npm run build
+```
 
-### Test (build.ps1)
+### Just run the tests
+```Shell
+PS> npm run test
+```
 
-> Requires the Atom text editor be installed.
-
-1. Run `.\build.ps1` with `-Test`. Which will build the grammar file and run all of the specs.
-
-    ```
-    PS> .\build.ps1 -Test
-    ```
-
-### Build (npm)
-
-1. Use `npm` to install dependencies:
-
-    ```
-    npm install
-    ```
-
-2. Run the `build-grammar` script to generate the json file.
-
-    ```
-    npm run build-grammar
-    ```
-
-3. The .json file will be generated in `./grammars/` at the root of the project.
-
-### Test (Atom cli)
-
-1. Build the grammar file using the above steps.
-
-3. Use the Atom cli command for your os (atom.cmd or atom.sh) to run the tests from the root of the EditorSystax project folder.
-
-    ```
-    atom --test spec
-    ```
+### Run a specific test file
+```Shell
+PS> npx textmate-grammar-test testfiles/operators/format.ps1
+```
 
 ## Contributing
 

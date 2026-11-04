@@ -7,9 +7,9 @@
     "url": "https://github.com/PowerShell/EditorSyntax.git"
   },
   "scripts": {
-    "build:grammar": "node ./tools/build-grammar.js ./PowerShellSyntax.tmLanguage ./grammars/powershell.tmLanguage.json",
-    "test:grammar": "textmate-grammar-test \"testfiles/**/*.ps1\"",
-    "test": "npm run build:grammar && npm run test:grammar"
+    "build": "node ./tools/build-grammar.js ./PowerShellSyntax.tmLanguage ./grammars/powershell.tmLanguage.json",
+    "test": "textmate-grammar-test \"testfiles/**/*.ps1\"",
+    "full": "npm run build && npm run test"
   },
   "contributes": {
     "languages": [

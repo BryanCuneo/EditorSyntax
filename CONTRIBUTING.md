@@ -119,52 +119,91 @@ Once you've loaded your modified version in your editor you will want to make su
 
 ## Run the automated tests
 
-In order to prevent against regression we've included a number of specs in `.\spec` that specify what scopes are expected and are compared against those actually assigned by the grammar file. Before submitting a pull request you should always run the tests as they will be run against your PR and failures will block merging.
+In order to prevent against regression we've included a number of unit test specifications in [testfiles/](testfiles/) that specify what scopes are expected and are compared against those actually assigned by the grammar file. Before submitting a pull request you should always run the tests as they will be run against your PR and failures will block merging. The tests require you to have NodeJS and the project dependencies installed via `npm install`.
 
-1. Currently the tests require you to have [Atom](https://atom.io/) installed on your computer (it's free) as they use Atom's tokenizer. (Atom needs to be in your PATH.)
-1. Run the build.ps1 script with the `-Test` switch: `.\build.ps1 -Test` and you should get an output like this:
-    ```
-    Running specs...
+Build and test:
+```Shell
+PS> npm run full
+```
 
-    .................................................................................
+Just test:
+```Shell
+PS> npm run test
+```
 
-    Finished in 24.42 seconds
-    367 tests, 3524 assertions, 0 failures, 0 skipped
-    ```
+Please see [Install Dependencies, Build, and Test](README.md#install-dependencies--build--and-test) for more details.
 
-If installing Atom is not an option or you cannot get it working you can submit a PR with "[WIP]" for Work-In-Progress in the title and our continuous integration tools will run the tests for you.
+You should get an output that looks something like this:
+
+```
+PS ~\source\bryancuneo\EditorSyntax> npm run full
+npm notice run full
+npm notice run npm run build && npm run test
+npm notice run build
+npm notice run node ./tools/build-grammar.js ./PowerShellSyntax.tmLanguage ./grammars/powershell.tmLanguage.json
+[Starting] Converting ./PowerShellSyntax.tmLanguage to json.
+... Reading source file.
+... Parsing content.
+... Building contents.
+[Finished] File written to: ./grammars/powershell.tmLanguage.json
+npm notice run test
+npm notice run textmate-grammar-test "testfiles/**/*.ps1"
+√ testfiles\using_and_requires.ps1 run successfuly.
+√ testfiles\reserved_words.ps1 run successfuly.
+√ testfiles\misc.ps1 run successfuly.
+√ testfiles\variables\names_and_scopes.ps1 run successfuly.
+√ testfiles\variables\automatic_variables.ps1 run successfuly.
+√ testfiles\variables\automatic_constants.ps1 run successfuly.
+√ testfiles\types\type_accelerators.ps1 run successfuly.
+√ testfiles\types\strings_and_formatting-single_quotes.ps1 run successfuly.
+√ testfiles\types\strings_and_formatting-double_quotes.ps1 run successfuly.
+√ testfiles\types\numeric_literals.ps1 run successfuly.
+√ testfiles\types\hashtables.ps1 run successfuly.
+√ testfiles\types\classes.ps1 run successfuly.
+√ testfiles\types\arrays.ps1 run successfuly.
+√ testfiles\operators\redirection.ps1 run successfuly.
+√ testfiles\operators\format.ps1 run successfuly.
+√ testfiles\operators\comparison.ps1 run successfuly.
+√ testfiles\functions\user-defined.ps1 run successfuly.
+√ testfiles\functions\splatting.ps1 run successfuly.
+√ testfiles\functions\other.ps1 run successfuly.
+√ testfiles\functions\filters.ps1 run successfuly.
+√ testfiles\functions\cmdlets.ps1 run successfuly.
+√ testfiles\functions\built-ins_and_aliases.ps1 run successfuly.
+√ testfiles\flow_control\try_catch_finally.ps1 run successfuly.
+√ testfiles\flow_control\switch.ps1 run successfuly.
+√ testfiles\flow_control\for_loops.ps1 run successfuly.
+```
 
 If you get any errors that were unexpected make sure to fix them and run the tests again. If your change caused a test to break on purpose or if you need to create tests for something entirely new, continue to the next section.
 
 ## Create tests and/or modify existing tests
 
-There are two types of tests included in the `.\spec` directory, Mocha tests in `powershell-spec.coffee`, and specs that use the [Sublime Syntax test format](https://www.sublimetext.com/docs/3/syntax.html#testing) in `.\testfiles\*.ps1`. The Mocha tests exist just for comments as the spec format uses comments in its syntax. Unless you're changing how comments work or adding new ps1 files to `.\testfiles` you should not need to modify the CoffeeScript file.
-
-Specs in the three `ps1` files under `.\spec\testfiles` use comments below real PowerShell code to tell the tokenizer what scope is expected at a particular column (use a monospaced font when working on specs.) The specs use the same format defined here: [Sublime Syntax test format](https://www.sublimetext.com/docs/3/syntax.html#testing)
-
-This example spec:
+`testfiles\**\*.ps1` unit tests are provided in the [TextMate Grammar Test syntax](https://github.com/serkonda7/textmate-grammar-test#-unit-testing-syntax). This example unit test from [strings_and_formatting-double-quotes.ps1](testfiles/types/strings_and_formatting-double_quotes.ps1):
 
 ```PowerShell
-'This is a string'
-# <- punctuation.definition.string.begin.powershell string.quoted.single.powershell
-# ^^^^^^^^^^^^^^^ string.quoted.single.powershell
-#                ^ punctuation.definition.string.end.powershell
+"This is a double-quoted string"
+#<- string.quoted.double.powershell punctuation.definition.string.begin.powershell
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.powershell
+#                              ^ punctuation.definition.string.end.powershell
 ```
 
-Is saying the very first character (`# <-` means the first column or what is vertically in line with the comment symbol) should have the scopes `punctuation.definition.string.begin.powershell` and `string.quoted.single.powershell`, that the text in between should have the scope `string.quoted.single.powershell`, and the final character should have the scope `punctuation.definition.string.end.powershell`. As you can see the carats point at the elements on the actual code line and are trailed by the expected scopes.
+is saying the very first character should have the scopes `string.quoted.double.powershell` and `punctuation.definition.string.begin.powershell`, that the text `string.quoted.double.powershell`, and the final character should have the scope `punctuation.definition.string.end.powershell`. As you can see the carats point at the elements on the actual code line and are trailed by the expected scopes.
 
-Keep in mind that it is not necessary to point to the whole string unless there's an expectation that something it contains might break it:
+Keep in mind that it is not necessary to point to the whole string unless there's an expectation that something it contains might break it. This version:
 
 ```PowerShell
-'This is a string'
-# <- punctuation.definition.string.begin.powershell string.quoted.single.powershell
-# ^ string.quoted.single.powershell
-#                ^ punctuation.definition.string.end.powershell
+"This is a double-quoted string"
+#<- string.quoted.double.powershell punctuation.definition.string.begin.powershell
+#^ string.quoted.double.powershell
+#                              ^ punctuation.definition.string.end.powershell
 ```
 
 is just as valid.
 
-**Note:** your can also use `not:scope.name` to make sure something doesn't inherit a scope in a spec.
+**Note:** your can also use `! scope.name` to make sure something doesn't inherit a scope.
+
+Please review the [syntax documentation](https://github.com/serkonda7/textmate-grammar-test#-unit-testing-syntax) and existing test files for more information.
 
 Once you've made your changes to the grammar file you will want to modify any specs that broke as a result (as long as it was expected) and add new specs for your changes. Be sure to account for things that should happen and things that shouldn't. Ie, if your change should only scope something when it is inside a string you should have a spec that makes sure that happens and a spec that makes sure it doesn't match outside of a string.
 
