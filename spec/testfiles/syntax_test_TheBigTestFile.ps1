@@ -1214,7 +1214,6 @@ $b -cLike $c
 #         ^ string.quoted.single.powershell
 #                   ^ keyword.operator.string-format.powershell
 
-#endregion
 
 # Misc test cases
 Test-Function -Class ClassName
@@ -1297,3 +1296,5 @@ $ConfirmPreference $DebugPreference $ErrorActionPreference $ErrorView $FormatEnu
 #                   ^ variable.language.powershell          ^ variable.language.powershell      ^ variable.language.powershell               ^ variable.language.powershell                  ^ variable.language.powershell                   ^ variable.language.powershell                ^ variable.language.powershell        ^ variable.language.powershell             ^ variable.language.powershell             ^ variable.language.powershell                       ^ variable.language.powershell                        ^ variable.language.powershell               ^ variable.language.powershell                        ^ variable.language.powershell       ^ variable.language.powershell        ^ variable.language.powershell
 #                                    ^ variable.language.powershell     ^ variable.language.powershell                 ^ variable.language.powershell                  ^ variable.language.powershell                  ^ variable.language.powershell                    ^ variable.language.powershell        ^ variable.language.powershell           ^ variable.language.powershell             ^ variable.language.powershell  ^ variable.language.powershell                           ^ variable.language.powershell                                        ^ variable.language.powershell               ^ variable.language.powershell
 #                                                                                                                                                                                                                                                                                                                                                                                                       ^ variable.language.powershell             ^ variable.language.powershell                   ^ variable.language.powershell                                                                                                                     ^ variable.language.powershell          ^ variable.language.powershell
+
+#endregion
