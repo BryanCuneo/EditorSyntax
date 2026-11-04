@@ -1,6 +1,6 @@
 # Considering an Atom Replacement Part 2 - Modern Test Stack
 
-Atom was sunset all the way back in 2022, and I think the grammar testing can be improved by moving away from it as the test runner. There are two potential routes to go. One is to move away completely from Atom and continuation projects to a more modern system. This branch utilizes [TextMate Grammar Test](https://github.com/serkonda7/textmate-grammar-test), an actively maintained harness around Visual Studio Code's tokenization system ([vscode-textmate](https://github.com/microsoft/vscode-textmate)/[vscode-oniguruma](https://github.com/microsoft/vscode-oniguruma)) implemented in Node. This will require more work than simply dropping in an Atom-compatible replacement but I think it will offer a better testing experience overall and be a good opportunity to expand and organize tests in a more developer-friendly way. I have implemented all tests from [The Big Test File](spec/testfiles/syntax_test_TheBigTestFile.ps1), they can be found in [the testfiles/ directory](testfiles/). You can run all tests or a specific one.
+Atom was sunset all the way back in 2022, and I think the grammar testing can be improved by moving away from it as the test runner. There are two potential routes to go. One is to move away completely from Atom and continuation projects to a more modern system. This branch utilizes [TextMate Grammar Test](https://github.com/serkonda7/textmate-grammar-test), an actively maintained harness around Visual Studio Code's tokenization system ([vscode-textmate](https://github.com/microsoft/vscode-textmate)/[vscode-oniguruma](https://github.com/microsoft/vscode-oniguruma)) implemented in Node. This will require more work than simply dropping in an Atom-compatible replacement but I think it will offer a better testing experience overall and be a good opportunity to expand and organize tests in a more developer-friendly way. The test format is very similar to the existing ones but not quite the same so I have convert all tests from [The Big Test File](spec/testfiles/syntax_test_TheBigTestFile.ps1), they can be found in [the testfiles/ directory](testfiles/). You can run all tests or a specific one. While I was at it, I organized the tests into separate files and also added a few new tests and several new assertions within existing tests. I haven't yet converted the tests from [syntax_test_Function.ps1](spec/testfiles/syntax_test_Class.ps1) and [syntax_test_Function](https://github.com/BryanCuneo/EditorSyntax/blob/modernize_tests/spec/testfiles/syntax_test_Function.ps1), but those are next on the list.
 
 ### Build and Run All Tests
 `npm run test`
@@ -58,6 +58,27 @@ After building the grammar, you can run a specific test file like so:
 ```PowerShell
 npx textmate-grammar-test "testfiles/variables/automatic_constants.ps1"
 ```
+
+### Performance
+Using Atom as a test runner is quite slow, thankfully this is much faster:
+
+```PowerShell
+PS ~\source\EditorSyntax> measure-command { npm run test:grammar }
+
+Days              : 0
+Hours             : 0
+Minutes           : 0
+Seconds           : 0
+Milliseconds      : 422
+Ticks             : 4229053
+TotalDays         : 4.89473726851852E-06
+TotalHours        : 0.000117473694444444
+TotalMinutes      : 0.00704842166666667
+TotalSeconds      : 0.4229053
+TotalMilliseconds : 422.9053
+```
+
+Atom averages about 6.6s on my primary machine.
 
 # Part 1 - Pulsar as Drop-In Atom Replacement
 In a separate branch I explored using the [Pulsar editor](https://pulsar-edit.dev/) as a modern replacement for Atom as the test runner. Read about that [here](https://github.com/BryanCuneo/EditorSyntax/blob/atom_replacements/ATOM_REPLACEMENT-PT1.md).
