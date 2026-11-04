@@ -943,8 +943,6 @@ function Verb-Noun
 }
 # <- punctuation.section.braces.end.powershell
 
-
-
 # Class
 class Vehicle {
 # <- storage.type.powershell
@@ -1152,8 +1150,6 @@ $b -cLike $c
 "HEY" -ile "hey"
 #     ^ keyword.operator.comparison.powershell
 
-#endregion
-
 # format
     "{0:N2}" -f $a
 #   ^^^^^^^^ string.quoted.double.powershell
@@ -1217,6 +1213,8 @@ $b -cLike $c
     '{0:00000.000}' -f 7.125
 #         ^ string.quoted.single.powershell
 #                   ^ keyword.operator.string-format.powershell
+
+#endregion
 
 # Misc test cases
 Test-Function -Class ClassName
