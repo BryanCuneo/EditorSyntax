@@ -1052,8 +1052,6 @@ notepad.exe 2>&1> log.txt
 # <- support.function.powershell
 #           ^^^^^ keyword.operator.redirection.powershell
 
-#endregion
-
 # Operators
 if (10 -cgt 100) { }
 # <- keyword.control.powershell
@@ -1153,6 +1151,8 @@ $b -cLike $c
 #     ^ keyword.operator.comparison.powershell
 "HEY" -ile "hey"
 #     ^ keyword.operator.comparison.powershell
+
+#endregion
 
 # format
     "{0:N2}" -f $a
