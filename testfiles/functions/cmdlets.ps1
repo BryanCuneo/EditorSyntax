@@ -37,7 +37,6 @@ Invoke-Something (1..20 | Invoke-Something) -p2 'value'
 #                         ^^^^^^^^^^^^^^^^ support.function.powershell
 #                                         ^ meta.group.simple.subexpression.powershell punctuation.section.group.end.powershell
 #                                           ^ keyword.operator.assignment.powershell
-
 #                                               ^ punctuation.definition.string.begin.powershell
 #                                               ^^^^^^^ string.quoted.single.powershell
 #                                                     ^ punctuation.definition.string.end.powershell

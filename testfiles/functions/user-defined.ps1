@@ -308,9 +308,9 @@ function Verb-Noun {
                    ConfirmImpact            = 'Medium')]
 #                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.attribute.powershell
 #                  ^^^^^^^^^^^^^ variable.parameter.attribute.powershell
-                #                           ^ keyword.operator.assignment.powershell
-                #                              ^ string.quoted.single.powershell
-                #                                     ^ punctuation.section.group.end.powershell
+#                                           ^ keyword.operator.assignment.powershell
+#                                              ^ string.quoted.single.powershell
+#                                                     ^ punctuation.section.group.end.powershell
 #                                                      ^ punctuation.section.bracket.end.powershell
     [Alias()]
 #   ^^^^^^^^^ meta.attribute.powershell

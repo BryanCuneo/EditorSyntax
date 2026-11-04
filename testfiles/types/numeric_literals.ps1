@@ -16,8 +16,8 @@
 #^^ constant.numeric.integer.powershell
 
 4.
-#< constant.numeric.integer.powershell
-# ^ ! constant.numeric.integer.powershell
+#<- constant.numeric.integer.powershell
+#^ ! constant.numeric.integer.powershell
 
 5.d
 #<--- constant.numeric.integer.powershell

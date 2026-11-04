@@ -78,7 +78,6 @@ class Vehicle {
 }
 #<- meta.scriptblock.powershell punctuation.section.braces.end.powershell
 
-
 #region formerly in syntax_test_Class.ps1
 
 using namespace system.management.automation
