@@ -1,4 +1,4 @@
-# SYNTAX TEST v1 "source.powershell" "User-defined functions"
+# SYNTAX TEST v1 "source.powershell" "Comparison operators"
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comparison_operators
 
 if (10 -cgt 100) { }

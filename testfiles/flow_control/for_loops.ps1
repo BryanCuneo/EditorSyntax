@@ -1,4 +1,4 @@
-# SYNTAX TEST v1 "source.powershell" "Switch statement"
+# SYNTAX TEST v1 "source.powershell" "For loops"
 # https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/06-flow-control
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_for
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_foreach

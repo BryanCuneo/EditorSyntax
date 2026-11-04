@@ -1,4 +1,4 @@
-# SYNTAX TEST v1 "source.powershell" "User-defined variables and their scope modifiers"
+# SYNTAX TEST v1 "source.powershell" "User-defined variables and scope modifiers"
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_variables
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_scopes?view=powershell-7.6
 

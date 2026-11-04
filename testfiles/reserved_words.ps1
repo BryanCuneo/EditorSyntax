@@ -1,4 +1,4 @@
-# SYNTAX TEST v1 "source.powershell" "Data redirection operators"
+# SYNTAX TEST v1 "source.powershell" "Words used by the PowerShell language"
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_reserved_words
 
 

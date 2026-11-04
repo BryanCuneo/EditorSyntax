@@ -1,4 +1,4 @@
-# SYNTAX TEST v1 "source.powershell" "User-defined variables and their scope modifiers"
+# SYNTAX TEST v1 "source.powershell" "Miscellaneous that don't yet have a good home"
 
 Test-Function -Class ClassName
 #              ^^^^^ ! storage.type.powershell
