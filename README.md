@@ -4,7 +4,7 @@ This project establishes the central development and maintenance of syntax defin
 files for the PowerShell language used by editors that leverage the XML version of the
 [TextMate language grammar format](http://manual.macromates.com/en/language_grammars).
 
-Currently this syntax definition is used in the following editors and extensions:
+Currently this syntax definition is used [by GitHub](https://github.com/github-linguist/linguist/blob/main/vendor/README.md) and by the following editors and extensions:
 
 | Editor | Extension | Developer |
 |--- |--- |--- |
@@ -14,9 +14,18 @@ Currently this syntax definition is used in the following editors and extensions
 In the future we may find a more common syntax that allows us to generate syntax
 definitions for editors that don't leverage the TextMate format.
 
-## Status
+## What's New
 
-This is a WIP branch containing new tooling.
+This branch utilizes new tooling to test the grammar and will be receiving further grammar and test improvements.
+
+### Grammar Updates
+*coming soon*
+
+### Testing
+At the time of writing, the testing solution in the official repository requires Atom, GitHub's old text editor that was sunset in 2022. That makes it a bit of a pain to set up and it's fairly slow. Instead, this branch utilizes [TextMate Grammar Test](https://github.com/serkonda7/textmate-grammar-test), an actively maintained harness around Visual Studio Code's tokenization system ([vscode-textmate](https://github.com/microsoft/vscode-textmate)/[vscode-oniguruma](https://github.com/microsoft/vscode-oniguruma)) implemented in Node. It's modern, significantly faster, doesn't require you to install and end-of-life text editor, and it's [incredibly easy to integrate into CI](.github/workflows/node.js.yml). The unit tests themselves have been organized and now include links to relevant Microsoft documentation at the top, you can find them in [testfiles/](testfiles/).
+
+### New Node and NPM Package Versions
+Due to it's age and dependency on Atom, the old Node setup was difficult to update or add new packages to. This branch was built and tested with the current latest LTS, 26.x.
 
 ## Install Dependencies, Build, and Test
 ### Prerequisites
