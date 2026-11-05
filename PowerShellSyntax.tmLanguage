@@ -286,6 +286,72 @@
 			<key>name</key>
 			<string>support.function.powershell</string>
 		</dict>
+				<dict>
+			<key>comment</key>
+			<string>This operator goes above 'keyword.control.powershell' because that rule would catch the '?' first.</string>
+			<key>match</key>
+			<string>\?\?=</string>
+			<key>name</key>
+			<string>keyword.operator.null-coalescing-assignment.powershell</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>This operator goes above 'keyword.control.powershell' because that rule would catch the '?' first.</string>
+			<key>match</key>
+			<string>\?\?</string>
+			<key>name</key>
+			<string>keyword.operator.null-coalescing.powershell</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>This operator goes above 'keyword.control.powershell' because that rule would catch the '?' first.</string>
+			<key>match</key>
+			<string>((?&lt;=\})|(?&lt;=\)))\?\.</string>
+			<key>name</key>
+			<string>keyword.operator.null-conditional-member-access.powershell</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>After a null-conditional-member-access operator, still scope the member as variable.other.member.powershell</string>
+			<key>match</key>
+			<string>(?&lt;=\?\.)[\p{L}\d_]+</string>
+			<key>name</key>
+			<string>variable.other.member.powershell</string>
+		</dict>
+		<dict>
+		<key>begin</key>
+			<string>(?:(?&lt;=\})|(?&lt;=\)))\?(\[)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.null-conditional-index.powershell</string>
+				</dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.bracket.begin.powershell</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\])</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.bracket.end.powershell</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
 		<dict>
 			<key>match</key>
 			<string>(?&lt;!\w|-|\.)((?i:begin|break|catch|clean|continue|data|default|define|do|dynamicparam|else|elseif|end|exit|finally|for|from|if|in|inlinescript|parallel|param|process|return|sequence|switch|throw|trap|try|until|var|while)|%|\?)(?!\w)</string>
@@ -1162,7 +1228,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(?i:(\$|@)((?:\p{L}|\d|_)+:)?((?:\p{L}|\d|_)+))((?:\.(?:\p{L}|\d|_)+)*\b)?</string>
+					<string>(?i:(\$|@)((?:\p{L}|\d|_)+:)?((?:\p{L}|\d|_|\?)+))((?:(?:\.|\?\.)(?:\p{L}|\d|_)+)*\b)?</string>
 				</dict>
 				<dict>
 					<key>captures</key>
