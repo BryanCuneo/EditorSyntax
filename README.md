@@ -16,10 +16,13 @@ definitions for editors that don't leverage the TextMate format.
 
 ## What's New
 
-This branch utilizes new tooling to test the grammar and will be receiving further grammar and test improvements.
+This branch includes fixes and improvements to the syntax grammar as well as new tooling for unit tests.
 
 ### Grammar Updates
-*coming soon*
+* Fixed errors with two tokens that caused failed tests
+  * `$error` - [7396a71](https://github.com/BryanCuneo/EditorSyntax/commit/7396a71c5ab3a2fd2b1f710d816721c5fcd09014)
+  * `$home` - [0e55e8a](https://github.com/BryanCuneo/EditorSyntax/commit/0e55e8ad14e8875a86726ae8af16e795e5e87987)
+* Added support for [PowerShell 7's null operators](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_operators#null-coalescing-assignment-operator-) (`??`, `??=`, `?.`, `?[]`) - commit [8b65196](https://github.com/BryanCuneo/EditorSyntax/commit/8b651962ba21cfcdd66201393421eb748e8b4b7b)
 
 ### Testing
 At the time of writing, the testing solution in the official repository requires Atom, GitHub's old text editor that was sunset in 2022. That makes it a bit of a pain to set up and it's fairly slow. Instead, this branch utilizes [TextMate Grammar Test](https://github.com/serkonda7/textmate-grammar-test), an actively maintained harness around Visual Studio Code's tokenization system ([vscode-textmate](https://github.com/microsoft/vscode-textmate)/[vscode-oniguruma](https://github.com/microsoft/vscode-oniguruma)) implemented in Node. It's modern, significantly faster, doesn't require you to install and end-of-life text editor, and it's [incredibly easy to integrate into CI](.github/workflows/node.js.yml). The unit tests themselves have been organized and now include links to relevant Microsoft documentation at the top, you can find them in [testfiles/](testfiles/).
