@@ -632,6 +632,22 @@
 					<key>name</key>
 					<string>support.function.powershell</string>
 				</dict>
+
+				<dict>
+					<key>comment</key>
+					<string>Fallback: bare command name after a pipeline operator</string>
+					<key>match</key>
+					<string>(?&lt;=[|;])[ \t]*(?:&amp;[ \t]*)?\K(?!(?:[\p{L}_][\p{L}\p{N}_-]*)[ \t]*=)(?!(?i:begin|break|catch|clean|continue|data|default|define|do|dynamicparam|else|elseif|end|exit|finally|for|foreach|from|if|in|inlinescript|parallel|param|process|return|sequence|switch|throw|trap|try|until|var|while|function|filter|configuration|workflow)\b)(?!(?i:Add|Approve|Assert|Backup|Block|Build|Checkpoint|Clear|Close|Compare|Complete|Compress|Confirm|Connect|Convert|ConvertFrom|ConvertTo|Copy|Debug|Deny|Deploy|Disable|Disconnect|Dismount|Edit|Enable|Enter|Exit|Expand|Export|Find|Format|Get|Grant|Group|Hide|Import|Initialize|Install|Invoke|Join|Limit|Lock|Measure|Merge|Mount|Move|New|Open|Optimize|Out|Ping|Pop|Protect|Publish|Push|Read|Receive|Redo|Register|Remove|Rename|Repair|Request|Reset|Resize|Resolve|Restart|Restore|Resume|Revoke|Save|Search|Select|Send|Set|Show|Skip|Split|Start|Step|Stop|Submit|Suspend|Switch|Sync|Test|Trace|Unblock|Undo|Uninstall|Unlock|Unprotect|Unpublish|Unregister|Update|Use|Wait|Watch|Write|ForEach|Sort|Tee|Where)-)([\p{L}_][\p{L}\p{N}_-]*)\b</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.badname.powershell</string>
+						</dict>
+					</dict>
+				</dict>
+
 			</array>
 		</dict>
 		<key>commentEmbeddedDocs</key>
@@ -1006,6 +1022,22 @@
 					<key>include</key>
 					<string>$self</string>
 				</dict>
+
+				<dict>
+					<key>comment</key>
+					<string>Fallback: first bare command name in a scriptblock</string>
+					<key>match</key>
+					<string>(?&lt;!@\{)(?&lt;=\{)[ \t\r\n]*(?:&amp;[ \t]*)?\K(?!(?i:begin|break|catch|clean|continue|data|default|define|do|dynamicparam|else|elseif|end|exit|finally|for|foreach|from|if|in|inlinescript|parallel|param|process|return|sequence|switch|throw|trap|try|until|var|while|function|filter|configuration|workflow)\b)(?!(?i:Add|Approve|Assert|Backup|Block|Build|Checkpoint|Clear|Close|Compare|Complete|Compress|Confirm|Connect|Convert|ConvertFrom|ConvertTo|Copy|Debug|Deny|Deploy|Disable|Disconnect|Dismount|Edit|Enable|Enter|Exit|Expand|Export|Find|Format|Get|Grant|Group|Hide|Import|Initialize|Install|Invoke|Join|Limit|Lock|Measure|Merge|Mount|Move|New|Open|Optimize|Out|Ping|Pop|Protect|Publish|Push|Read|Receive|Redo|Register|Remove|Rename|Repair|Request|Reset|Resize|Resolve|Restart|Restore|Resume|Revoke|Save|Search|Select|Send|Set|Show|Skip|Split|Start|Step|Stop|Submit|Suspend|Switch|Sync|Test|Trace|Unblock|Undo|Uninstall|Unlock|Unprotect|Unpublish|Unregister|Update|Use|Wait|Watch|Write|ForEach|Sort|Tee|Where)-)([\p{L}_][\p{L}\p{N}_-]*)\b</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.badname.powershell</string>
+						</dict>
+					</dict>
+				</dict>
+			
 			</array>
 		</dict>
 		<key>type</key>
