@@ -3,12 +3,15 @@
 # https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/09-functions#naming
 
 MyFunction
+#<---------- support.function.badname.powershell
 
 MyFunction -Data $data
+#<---------- support.function.badname.powershell
 #                ^ punctuation.definition.variable.powershell
 #                ^^^^^ variable.other.readwrite.powershell
 
 MyFunction $data
+#<---------- support.function.badname.powershell
 #          ^ punctuation.definition.variable.powershell
 #          ^^^^^ variable.other.readwrite.powershell
 
@@ -44,6 +47,23 @@ Write-Host (MyFunction | Select-Object Name)
 #            ^ punctuation.definition.variable.powershell
 #            ^^^^^^^^^ variable.other.readwrite.powershell
 #                     ^ punctuation.section.group.end.powershell
+
+(
+#<- meta.group.simple.subexpression.powershell punctuation.section.group.begin.powershell
+    Invoke-Something "Hello",
+#   ^^^^^^^^^^^^^^^^^^^^^^^^^ meta.group.simple.subexpression.powershell
+#   ^^^^^^^^^^^^^^^^ support.function.powershell ! support.function.badname.powershell
+#                    ^ punctuation.definition.string.begin.powershell
+#                    ^^^^^^^ string.quoted.double.powershell
+#                          ^ punctuation.definition.string.end.powershell
+#                           ^ keyword.operator.other.powershell
+    MyFunction -Data $temp
+#   ^^^^^^^^^^^^^^^^^^^^^^ meta.group.simple.subexpression.powershell
+#   ^^^^^^^^^^ support.function.badname.powershell
+#                    ^ punctuation.definition.variable.powershell
+#                    ^^^^ variable.other.readwrite.powershell
+)
+#<- meta.group.simple.subexpression.powershell punctuation.section.group.end.powershell
 
 $data | MyFunction
 #<- punctuation.definition.variable.powershell
@@ -118,6 +138,23 @@ Write-Host "Hello" ; MyFunction "World!"
 #             ^ punctuation.definition.variable.powershell
 #             ^^^^^^^^^ variable.other.readwrite.powershell
 #                       ^ punctuation.section.braces.end.powershell
+
+{
+#<- meta.scriptblock.powershell punctuation.section.braces.begin.powershell
+    Invoke-Something "Hello",
+#   ^^^^^^^^^^^^^^^^^^^^^^^^^ meta.scriptblock.powershell
+#   ^^^^^^^^^^^^^^^^ support.function.powershell ! support.function.badname.powershell
+#                    ^ punctuation.definition.string.begin.powershell
+#                    ^^^^^^^ string.quoted.double.powershell
+#                          ^ punctuation.definition.string.end.powershell
+#                           ^ keyword.operator.other.powershell
+    MyFunction -Data $temp
+#   ^^^^^^^^^^^^^^^^^^^^^^ meta.scriptblock.powershell
+#   ^^^^^^^^^^ support.function.badname.powershell
+#                    ^ punctuation.definition.variable.powershell
+#                    ^^^^ variable.other.readwrite.powershell
+}
+#<- meta.scriptblock.powershell punctuation.section.braces.end.powershell
 
 $scriptBlock = { Get-Content -Path "test.txt" | MyFunction }
 #<- punctuation.definition.variable.powershell

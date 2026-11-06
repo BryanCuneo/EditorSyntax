@@ -632,7 +632,6 @@
 					<key>name</key>
 					<string>support.function.powershell</string>
 				</dict>
-
 				<dict>
 					<key>comment</key>
 					<string>non-Verb-Noun function call after a pipe or a semi-colon</string>
@@ -647,7 +646,35 @@
 						</dict>
 					</dict>
 				</dict>
-
+				<dict>
+					<key>comment</key>
+					<string>non-Verb-Noun function call at the start of a line or simple variable assignment</string>
+					<key>match</key>
+					<string>^[ \t]*(?:(\$)([\p{L}_][\p{L}\p{N}_:]*)([ \t]*)(=)([ \t]*))?(?!(?:[\p{L}_][\p{L}\p{N}_-]*)[ \t]*=)(?!(?i:begin|break|catch|clean|continue|data|default|define|do|dynamicparam|else|elseif|end|exit|finally|for|foreach|from|if|in|inlinescript|parallel|param|process|return|sequence|switch|throw|trap|try|until|using|var|while|hidden|static|class|enum|function|filter|configuration|workflow)\b)(?!(?i:Add|Approve|Assert|Backup|Block|Build|Checkpoint|Clear|Close|Compare|Complete|Compress|Confirm|Connect|Convert|ConvertFrom|ConvertTo|Copy|Debug|Deny|Deploy|Disable|Disconnect|Dismount|Edit|Enable|Enter|Exit|Expand|Export|Find|Format|Get|Grant|Group|Hide|Import|Initialize|Install|Invoke|Join|Limit|Lock|Measure|Merge|Mount|Move|New|Open|Optimize|Out|Ping|Pop|Protect|Publish|Push|Read|Receive|Redo|Register|Remove|Rename|Repair|Request|Reset|Resize|Resolve|Restart|Restore|Resume|Revoke|Save|Search|Select|Send|Set|Show|Skip|Split|Start|Step|Stop|Submit|Suspend|Switch|Sync|Test|Trace|Unblock|Undo|Uninstall|Unlock|Unprotect|Unpublish|Unregister|Update|Use|Wait|Watch|Write|ForEach|Sort|Tee|Where)-)(?!(?:[\p{L}\p{N}_./\\:-]*\.(?i:exe|com|cmd|bat))\b)([\p{L}_][\p{L}\p{N}_-]*)\b</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.variable.powershell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>variable.other.readwrite.powershell</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.assignment.powershell</string>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.badname.powershell</string>
+						</dict>
+					</dict>
+				</dict>
 			</array>
 		</dict>
 		<key>commentEmbeddedDocs</key>

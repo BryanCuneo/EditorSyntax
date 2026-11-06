@@ -9,11 +9,11 @@
 
 & tool.exe
 #<- keyword.operator.other.powershell
-# ^^^^^^^^ support.function.powershell
+# ^^^^^^^^ support.function.powershell ! support.function.badname.powershell
 
 & tool.exe /arg1 'value' /arg2 $value --% /arg3 $value /arg4 "value" # Comment
 #<- keyword.operator.other.powershell
-# ^^^^^^^^ support.function.powershell
+# ^^^^^^^^ support.function.powershell ! support.function.badname.powershell
 #          ^             ^ keyword.operator.assignment.powershell
 #                ^ punctuation.definition.string.begin.powershell
 #                ^^^^^^^ string.quoted.single.powershell
@@ -27,7 +27,7 @@
 #                                                                    ^^^^^^^^^ ! comment.line.powershell
 
 something.cmd
-#<------------- support.function.powershell
+#<------------- support.function.powershell ! support.function.badname.powershell
 
 <#
     microsoft.com/powershell # this should also highlight - TODO
