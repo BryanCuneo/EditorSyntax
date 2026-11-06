@@ -13,7 +13,7 @@ MyFunction $data
 #          ^^^^ variable.other.readwrite.powershell
 
 $data = MyFunction | MyOtherFunction ; MyThirdFunction
-#<-punctuation.definition.variable.powershell
+#<- punctuation.definition.variable.powershell
 #^^^^ variable.other.readwrite.powershell
 #     ^ keyword.operator.assignment.powershell
 #                  ^ keyword.operator.other.powershell
@@ -29,13 +29,13 @@ Write-Host (MyFunction | Select-Object Name)
 #                                          ^ punctuation.section.group.end.powershell
 
 $data | MyFunction
-#<-punctuation.definition.variable.powershell
+#<- punctuation.definition.variable.powershell
 #^^^^ variable.other.readwrite.powershell
 #     ^ keyword.operator.other.powershell
 #       ^^^^^^^^^^ support.function.badname.powershell
 
 $obj | ForEach-Object { MyFunction $_ }
-#<-punctuation.definition.variable.powershell
+#<- punctuation.definition.variable.powershell
 #^^^ variable.other.readwrite.powershell
 #    ^ keyword.operator.other.powershell
 #      ^^^^^^^^^^^^^^ support.function.powershell ! support.function.badname.powershell
@@ -47,7 +47,7 @@ $obj | ForEach-Object { MyFunction $_ }
 #                                     ^ punctuation.section.braces.end.powershell
 
 $obj | ForEach-Object { $_ | MyFunction }
-#<-punctuation.definition.variable.powershell
+#<- punctuation.definition.variable.powershell
 #^^^ variable.other.readwrite.powershell
 #    ^                     ^ keyword.operator.other.powershell
 #      ^^^^^^^^^^^^^^ support.function.powershell ! support.function.badname.powershell
@@ -59,7 +59,7 @@ $obj | ForEach-Object { $_ | MyFunction }
 #                                       ^ punctuation.section.braces.end.powershell
 
 $obj | ForEach-Object { MyFunction -Data $_ | MyOtherFunction ; MyThirdFunction }
-#<-punctuation.definition.variable.powershell
+#<- punctuation.definition.variable.powershell
 #^^^ variable.other.readwrite.powershell
 #    ^                                      ^ keyword.operator.other.powershell
 #      ^^^^^^^^^^^^^^ support.function.powershell ! support.function.badname.powershell
@@ -87,7 +87,7 @@ Write-Host "Hello" ; MyFunction "World!"
 #              ^ punctuation.section.braces.end.powershell
 
 $scriptBlock = { Get-Content -Path "test.txt" | MyFunction }
-#<-punctuation.definition.variable.powershell
+#<- punctuation.definition.variable.powershell
 #^^^^^^^^^^^ variable.other.readwrite.powershell
 #            ^ keyword.operator.assignment.powershell
 #              ^ punctuation.section.braces.begin.powershell
