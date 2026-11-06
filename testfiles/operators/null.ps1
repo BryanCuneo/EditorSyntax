@@ -7,7 +7,7 @@ $result = $maybeNull ?? "fallback"
 #<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^^^^   ^^^^^^^^^^ variable.other.readwrite.powershell
 #       ^ keyword.operator.assignment.powershell
-#                    ^^ keyword.operator.null-coalescing.powershell
+#                    ^^ keyword.operator.null.coalescing.powershell
 #                       ^ punctuation.definition.string.begin.powershell
 #                       ^^^^^^^^^^ string.quoted.double.powershell
 #                                ^ punctuation.definition.string.end.powershell
@@ -15,8 +15,7 @@ $result = $maybeNull ?? "fallback"
 $maybeNull ??= "assigned"
 #<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^^^^^^^ variable.other.readwrite.powershell
-#          ^^^ keyword.operator.null-coalescing-assignment.powershell
-#            ^ ! keyword.operator.assignment.powershell
+#          ^^^ keyword.operator.assignment.powershell keyword.operator.null.coalescing-assignment.powershell
 #              ^ punctuation.definition.string.begin.powershell
 #              ^^^^^^^^^^ string.quoted.double.powershell
 #                       ^ punctuation.definition.string.end.powershell
@@ -26,7 +25,7 @@ ${maybeNull}?.Length
 #^ punctuation.section.braces.begin.powershell
 #^^^^^^^^^^^   variable.other.readwrite.powershell
 #          ^ punctuation.section.braces.end.powershell
-#           ^^ keyword.operator.null-conditional-member-access.powershell
+#           ^^ keyword.operator.null.conditional-member-access.powershell
 #             ^^^^^^ variable.other.member.powershell
 
 ${maybeNull}?[0]
@@ -34,7 +33,7 @@ ${maybeNull}?[0]
 #^ punctuation.section.braces.begin.powershell
 #^^^^^^^^^^^ variable.other.readwrite.powershell
 #          ^ punctuation.section.braces.end.powershell
-#           ^^ keyword.operator.null-conditional-index.powershell
+#           ^^ keyword.operator.null.conditional-index.powershell
 
 $($maybeNull.Property)?.Length
 #<- meta.group.complex.subexpression.powershell keyword.other.substatement.powershell punctuation.definition.subexpression.powershell
@@ -44,7 +43,7 @@ $($maybeNull.Property)?.Length
 # ^^^^^^^^^^ variable.other.readwrite.powershell
 #           ^^^^^^^^^   ^^^^^^ variable.other.member.powershell
 #                    ^ punctuation.section.group.end.powershell
-#                     ^^ keyword.operator.null-conditional-member-access.powershell
+#                     ^^ keyword.operator.null.conditional-member-access.powershell
 
 $($maybeNull.Property)?[0]
 #<- meta.group.complex.subexpression.powershell keyword.other.substatement.powershell punctuation.definition.subexpression.powershell
@@ -54,7 +53,7 @@ $($maybeNull.Property)?[0]
 # ^^^^^^^^^^ variable.other.readwrite.powershell
 #           ^^^^^^^^^ variable.other.member.powershell
 #                    ^ punctuation.section.group.end.powershell
-#                     ^^ keyword.operator.null-conditional-index.powershell
+#                     ^^ keyword.operator.null.conditional-index.powershell
 #                      ^ punctuation.section.bracket.begin.powershell
 #                       ^ constant.numeric.integer.powershell
 #                        ^ punctuation.section.bracket.end.powershell
@@ -70,22 +69,20 @@ $questionMarkInName? = "why is this allowed?"
 $questionMarkInName?.Length
 #<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^^^^^^^^^^^^^^^^^ variable.other.readwrite.powershell
-#                  ^^ ! keyword.operator.null-conditional-member-access.powershell
+#                  ^^ ! keyword.operator.null.conditional-member-access.powershell
 #                   ^^^^^^^ variable.other.member.powershell
 
 $questionMarkInName?[0]
 #<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^^^^^^^^^^^^^^^^^^^ variable.other.readwrite.powershell
-#                  ^^ ! keyword.operator.null-conditional-index.powershell
+#                  ^^ ! keyword.operator.null.conditional-index.powershell
 #                   ^ punctuation.section.bracket.begin.powershell
 #                    ^ constant.numeric.integer.powershell
 #                     ^ punctuation.section.bracket.end.powershell
 
 ${questionMarkInName?}.Length
-#<- variable.other.readwrite.powershell punctuation.definition.variable.powershell 
+#<- variable.other.readwrite.powershell punctuation.definition.variable.powershell
 #^ punctuation.section.braces.begin.powershell
 #^^^^^^^^^^^^^^^^^^^^^ variable.other.readwrite.powershell
 #                    ^ punctuation.section.braces.end.powershell
 #                     ^^^^^^^ variable.other.member.powershell
-
-

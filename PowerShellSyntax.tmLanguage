@@ -282,17 +282,27 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(\b(([A-Za-z0-9\-_\.]+)\.(?i:exe|com|cmd|bat))\b)</string>
+			<string>(\b(([A-Za-z0-9\-_\.]+)\.(?i:exe|cmd|bat|ps1|com))\b)</string>
 			<key>name</key>
 			<string>support.function.powershell</string>
 		</dict>
-				<dict>
+		<dict>
 			<key>comment</key>
 			<string>This operator goes above 'keyword.control.powershell' because that rule would catch the '?' first.</string>
 			<key>match</key>
 			<string>\?\?=</string>
 			<key>name</key>
-			<string>keyword.operator.null-coalescing-assignment.powershell</string>
+			<string>keyword.operator.assignment.powershell</string>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>comment</key>
+					<string>Add this so that it falls within the operator 'keyword.operator.assignment' scope as well.</string>
+					<key>name</key>
+					<string>keyword.operator.null.coalescing-assignment.powershell</string>
+				</dict>
+			</dict>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -300,7 +310,7 @@
 			<key>match</key>
 			<string>\?\?</string>
 			<key>name</key>
-			<string>keyword.operator.null-coalescing.powershell</string>
+			<string>keyword.operator.null.coalescing.powershell</string>
 		</dict>
 		<dict>
 			<key>comment</key>
@@ -308,11 +318,11 @@
 			<key>match</key>
 			<string>((?&lt;=\})|(?&lt;=\)))\?\.</string>
 			<key>name</key>
-			<string>keyword.operator.null-conditional-member-access.powershell</string>
+			<string>keyword.operator.null.conditional-member-access.powershell</string>
 		</dict>
 		<dict>
 			<key>comment</key>
-			<string>After a null-conditional-member-access operator, still scope the member as variable.other.member.powershell</string>
+			<string>After a null.conditional-member-access operator, still scope the member as variable.other.member.powershell</string>
 			<key>match</key>
 			<string>(?&lt;=\?\.)[\p{L}\d_]+</string>
 			<key>name</key>
@@ -326,7 +336,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.null-conditional-index.powershell</string>
+					<string>keyword.operator.null.conditional-index.powershell</string>
 				</dict>
 				<key>1</key>
 				<dict>
@@ -596,7 +606,7 @@
 					<key>comment</key>
 					<string>Verb-Noun pattern:</string>
 					<key>match</key>
-					<string>(?:(\p{L}|\d|_|-|\\|\:)*\\)?\b(?i:Add|Approve|Assert|Backup|Block|Build|Checkpoint|Clear|Close|Compare|Complete|Compress|Confirm|Connect|Convert|ConvertFrom|ConvertTo|Copy|Debug|Deny|Deploy|Disable|Disconnect|Dismount|Edit|Enable|Enter|Exit|Expand|Export|Find|Format|Get|Grant|Group|Hide|Import|Initialize|Install|Invoke|Join|Limit|Lock|Measure|Merge|Mount|Move|New|Open|Optimize|Out|Ping|Pop|Protect|Publish|Push|Read|Receive|Redo|Register|Remove|Rename|Repair|Request|Reset|Resize|Resolve|Restart|Restore|Resume|Revoke|Save|Search|Select|Send|Set|Show|Skip|Split|Start|Step|Stop|Submit|Suspend|Switch|Sync|Test|Trace|Unblock|Undo|Uninstall|Unlock|Unprotect|Unpublish|Unregister|Update|Use|Wait|Watch|Write)\-.+?(?:\.(?i:exe|cmd|bat|ps1))?\b</string>
+					<string>(?:(\p{L}|\d|_|-|\\|\:)*\\)?\b(?i:Add|Approve|Assert|Backup|Block|Build|Checkpoint|Clear|Close|Compare|Complete|Compress|Confirm|Connect|Convert|ConvertFrom|ConvertTo|Copy|Debug|Deny|Deploy|Disable|Disconnect|Dismount|Edit|Enable|Enter|Exit|Expand|Export|Find|Format|Get|Grant|Group|Hide|Import|Initialize|Install|Invoke|Join|Limit|Lock|Measure|Merge|Mount|Move|New|Open|Optimize|Out|Ping|Pop|Protect|Publish|Push|Read|Receive|Redo|Register|Remove|Rename|Repair|Request|Reset|Resize|Resolve|Restart|Restore|Resume|Revoke|Save|Search|Select|Send|Set|Show|Skip|Split|Start|Step|Stop|Submit|Suspend|Switch|Sync|Test|Trace|Unblock|Undo|Uninstall|Unlock|Unprotect|Unpublish|Unregister|Update|Use|Wait|Watch|Write)\-.+?(?:\.(?i:exe|cmd|bat|ps1|com))?\b</string>
 					<key>name</key>
 					<string>support.function.powershell</string>
 				</dict>
@@ -650,7 +660,7 @@
 					<key>comment</key>
 					<string>non-Verb-Noun function call at the start of a line or simple variable assignment</string>
 					<key>match</key>
-					<string>^[ \t]*(?:(\$)([\p{L}_][\p{L}\p{N}_:]*)([ \t]*)(=)([ \t]*))?(?!(?:[\p{L}_][\p{L}\p{N}_-]*)[ \t]*=)(?!(?i:begin|break|catch|clean|continue|data|default|define|do|dynamicparam|else|elseif|end|exit|finally|for|foreach|from|if|in|inlinescript|parallel|param|process|return|sequence|switch|throw|trap|try|until|using|var|while|hidden|static|class|enum|function|filter|configuration|workflow)\b)(?!(?i:Add|Approve|Assert|Backup|Block|Build|Checkpoint|Clear|Close|Compare|Complete|Compress|Confirm|Connect|Convert|ConvertFrom|ConvertTo|Copy|Debug|Deny|Deploy|Disable|Disconnect|Dismount|Edit|Enable|Enter|Exit|Expand|Export|Find|Format|Get|Grant|Group|Hide|Import|Initialize|Install|Invoke|Join|Limit|Lock|Measure|Merge|Mount|Move|New|Open|Optimize|Out|Ping|Pop|Protect|Publish|Push|Read|Receive|Redo|Register|Remove|Rename|Repair|Request|Reset|Resize|Resolve|Restart|Restore|Resume|Revoke|Save|Search|Select|Send|Set|Show|Skip|Split|Start|Step|Stop|Submit|Suspend|Switch|Sync|Test|Trace|Unblock|Undo|Uninstall|Unlock|Unprotect|Unpublish|Unregister|Update|Use|Wait|Watch|Write|ForEach|Sort|Tee|Where)-)(?!(?:[\p{L}\p{N}_./\\:-]*\.(?i:exe|com|cmd|bat))\b)([\p{L}_][\p{L}\p{N}_-]*)\b</string>
+					<string>^[ \t]*(?:(\$)([\p{L}_][\p{L}\p{N}_:]*)([ \t]*)(=)([ \t]*))?(?!(?:[\p{L}_][\p{L}\p{N}_-]*)[ \t]*=)(?!(?i:begin|break|catch|clean|continue|data|default|define|do|dynamicparam|else|elseif|end|exit|finally|for|foreach|from|if|in|inlinescript|parallel|param|process|return|sequence|switch|throw|trap|try|until|using|var|while|hidden|static|class|enum|function|filter|configuration|workflow)\b)(?!(?i:Add|Approve|Assert|Backup|Block|Build|Checkpoint|Clear|Close|Compare|Complete|Compress|Confirm|Connect|Convert|ConvertFrom|ConvertTo|Copy|Debug|Deny|Deploy|Disable|Disconnect|Dismount|Edit|Enable|Enter|Exit|Expand|Export|Find|Format|Get|Grant|Group|Hide|Import|Initialize|Install|Invoke|Join|Limit|Lock|Measure|Merge|Mount|Move|New|Open|Optimize|Out|Ping|Pop|Protect|Publish|Push|Read|Receive|Redo|Register|Remove|Rename|Repair|Request|Reset|Resize|Resolve|Restart|Restore|Resume|Revoke|Save|Search|Select|Send|Set|Show|Skip|Split|Start|Step|Stop|Submit|Suspend|Switch|Sync|Test|Trace|Unblock|Undo|Uninstall|Unlock|Unprotect|Unpublish|Unregister|Update|Use|Wait|Watch|Write|ForEach|Sort|Tee|Where)-)(?!(?:[\p{L}\p{N}_./\\:-]*\.(?i:exe|cmd|bat|ps1|com))\b)([\p{L}_][\p{L}\p{N}_-]*)\b</string>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
@@ -833,7 +843,7 @@
 					<key>comment</key>
 					<string>Command at the start of a subexpression: call-operator target or executable with an extension</string>
 					<key>match</key>
-					<string>(?&lt;=\()[ \t\r\n]*(?:(?:&amp;[ \t]*(?:(['"])([^'"\r\n]+)\1|([\p{L}_./][\p{L}\p{N}_./\\:-]*)))|([\p{L}_][\p{L}\p{N}_-]*\.(?i:exe|com|cmd|bat|ps1)\b))</string>
+					<string>(?&lt;=\()[ \t\r\n]*(?:(?:&amp;[ \t]*(?:(['"])([^'"\r\n]+)\1|([\p{L}_./][\p{L}\p{N}_./\\:-]*)))|([\p{L}_][\p{L}\p{N}_-]*\.(?i:exe|cmd|bat|ps1|com)\b))</string>
 					<key>captures</key>
 					<dict>
 						<key>2</key>
