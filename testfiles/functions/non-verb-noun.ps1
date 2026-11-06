@@ -6,11 +6,11 @@ MyFunction
 
 MyFunction -Data $data
 #                ^ punctuation.definition.variable.powershell
-#                ^^^^ variable.other.readwrite.powershell
+#                ^^^^^ variable.other.readwrite.powershell
 
 MyFunction $data
 #          ^ punctuation.definition.variable.powershell
-#          ^^^^ variable.other.readwrite.powershell
+#          ^^^^^ variable.other.readwrite.powershell
 
 $data = MyFunction | MyOtherFunction ; MyThirdFunction
 #<- punctuation.definition.variable.powershell
@@ -24,9 +24,26 @@ Write-Host (MyFunction | Select-Object Name)
 #<--------- support.function.powershell ! support.function.badname.powershell
 #          ^ punctuation.section.group.begin.powershell
 #          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.group.simple.subexpression.powershell
+#           ^^^^^^^^^^ support.function.badname.powershell
 #                      ^ keyword.operator.other.powershell
 #                        ^^^^^^^^^^^^^ support.function.powershell ! support.function.badname.powershell
 #                                          ^ punctuation.section.group.end.powershell
+
+(notepad.exe $path)
+#<- punctuation.section.group.begin.powershell
+#^^^^^^^^^^^^^^^^^^ meta.group.simple.subexpression.powershell
+#^^^^^^^^^^^ support.function.powershell ! support.function.badname.powershell
+#            ^ punctuation.definition.variable.powershell
+#            ^^^^^ variable.other.readwrite.powershell
+#                 ^ punctuation.section.group.end.powershell
+
+(& git clone $repoName)
+#<- punctuation.section.group.begin.powershell
+#^^^^^^^^^^^^^^^^^^^^^^ meta.group.simple.subexpression.powershell
+#  ^^^ support.function.powershell ! support.function.badname.powershell
+#            ^ punctuation.definition.variable.powershell
+#            ^^^^^^^^^ variable.other.readwrite.powershell
+#                     ^ punctuation.section.group.end.powershell
 
 $data | MyFunction
 #<- punctuation.definition.variable.powershell
@@ -85,6 +102,22 @@ Write-Host "Hello" ; MyFunction "World!"
 # ^^^^^^^^^^^^^^ meta.scriptblock.powershell
 #   ^^^^^^^^^^ support.function.badname.powershell
 #              ^ punctuation.section.braces.end.powershell
+
+{ & notepad.exe $path }
+#<- punctuation.section.braces.begin.powershell
+#^^^^^^^^^^^^^^^^^^^^^^ meta.scriptblock.powershell
+#   ^^^^^^^^^^^ support.function.powershell ! support.function.badname.powershell
+#               ^ punctuation.definition.variable.powershell
+#               ^^^^^ variable.other.readwrite.powershell
+#                     ^ punctuation.section.braces.end.powershell
+
+{ & git clone $repoName }
+#<- punctuation.section.braces.begin.powershell
+#^^^^^^^^^^^^^^^^^^^^^^^^ meta.scriptblock.powershell
+#   ^^^ support.function.powershell ! support.function.badname.powershell
+#             ^ punctuation.definition.variable.powershell
+#             ^^^^^^^^^ variable.other.readwrite.powershell
+#                       ^ punctuation.section.braces.end.powershell
 
 $scriptBlock = { Get-Content -Path "test.txt" | MyFunction }
 #<- punctuation.definition.variable.powershell

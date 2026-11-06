@@ -635,7 +635,7 @@
 
 				<dict>
 					<key>comment</key>
-					<string>Fallback: bare command name after a pipeline operator</string>
+					<string>non-Verb-Noun function call after a pipe or a semi-colon</string>
 					<key>match</key>
 					<string>(?&lt;=[|;])[ \t]*(?:&amp;[ \t]*)?\K(?!(?:[\p{L}_][\p{L}\p{N}_-]*)[ \t]*=)(?!(?i:begin|break|catch|clean|continue|data|default|define|do|dynamicparam|else|elseif|end|exit|finally|for|foreach|from|if|in|inlinescript|parallel|param|process|return|sequence|switch|throw|trap|try|until|var|while|function|filter|configuration|workflow)\b)(?!(?i:Add|Approve|Assert|Backup|Block|Build|Checkpoint|Clear|Close|Compare|Complete|Compress|Confirm|Connect|Convert|ConvertFrom|ConvertTo|Copy|Debug|Deny|Deploy|Disable|Disconnect|Dismount|Edit|Enable|Enter|Exit|Expand|Export|Find|Format|Get|Grant|Group|Hide|Import|Initialize|Install|Invoke|Join|Limit|Lock|Measure|Merge|Mount|Move|New|Open|Optimize|Out|Ping|Pop|Protect|Publish|Push|Read|Receive|Redo|Register|Remove|Rename|Repair|Request|Reset|Resize|Resolve|Restart|Restore|Resume|Revoke|Save|Search|Select|Send|Set|Show|Skip|Split|Start|Step|Stop|Submit|Suspend|Switch|Sync|Test|Trace|Unblock|Undo|Uninstall|Unlock|Unprotect|Unpublish|Unregister|Update|Use|Wait|Watch|Write|ForEach|Sort|Tee|Where)-)([\p{L}_][\p{L}\p{N}_-]*)\b</string>
 					<key>captures</key>
@@ -802,6 +802,44 @@
 			<string>meta.group.simple.subexpression.powershell</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>comment</key>
+					<string>Command at the start of a subexpression: call-operator target or executable with an extension</string>
+					<key>match</key>
+					<string>(?&lt;=\()[ \t\r\n]*(?:(?:&amp;[ \t]*(?:(['"])([^'"\r\n]+)\1|([\p{L}_./][\p{L}\p{N}_./\\:-]*)))|([\p{L}_][\p{L}\p{N}_-]*\.(?i:exe|com|cmd|bat|ps1)\b))</string>
+					<key>captures</key>
+					<dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.powershell</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.powershell</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.powershell</string>
+						</dict>
+					</dict>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>non-Verb-Noun function call at the start of a subexpression</string>
+					<key>match</key>
+					<string>(?&lt;=\()[ \t\r\n]*(?:&amp;[ \t]*)?\K(?!(?:[\p{L}_][\p{L}\p{N}_-]*)[ \t]*=)(?!(?i:begin|break|catch|clean|continue|data|default|define|do|dynamicparam|else|elseif|end|exit|finally|for|foreach|from|if|in|inlinescript|parallel|param|process|return|sequence|switch|throw|trap|try|until|var|while|function|filter|configuration|workflow)\b)(?!(?i:Add|Approve|Assert|Backup|Block|Build|Checkpoint|Clear|Close|Compare|Complete|Compress|Confirm|Connect|Convert|ConvertFrom|ConvertTo|Copy|Debug|Deny|Deploy|Disable|Disconnect|Dismount|Edit|Enable|Enter|Exit|Expand|Export|Find|Format|Get|Grant|Group|Hide|Import|Initialize|Install|Invoke|Join|Limit|Lock|Measure|Merge|Mount|Move|New|Open|Optimize|Out|Ping|Pop|Protect|Publish|Push|Read|Receive|Redo|Register|Remove|Rename|Repair|Request|Reset|Resize|Resolve|Restart|Restore|Resume|Revoke|Save|Search|Select|Send|Set|Show|Skip|Split|Start|Step|Stop|Submit|Suspend|Switch|Sync|Test|Trace|Unblock|Undo|Uninstall|Unlock|Unprotect|Unpublish|Unregister|Update|Use|Wait|Watch|Write|ForEach|Sort|Tee|Where)-)([\p{L}_][\p{L}\p{N}_-]*)\b</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.badname.powershell</string>
+						</dict>
+					</dict>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>$self</string>
@@ -1019,13 +1057,32 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>$self</string>
+					<key>comment</key>
+					<string>Command at the start of a scriptblock: call-operator target or executable with an extension</string>
+					<key>match</key>
+					<string>(?&lt;!@\{)(?&lt;=\{)[ \t\r\n]*(?:(?:&amp;[ \t]*(?:(['"])([^'"\r\n]+)\1|([\p{L}_./][\p{L}\p{N}_./\\:-]*)))|([\p{L}_][\p{L}\p{N}_-]*\.(?i:exe|com|cmd|bat|ps1)\b))</string>
+					<key>captures</key>
+					<dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.powershell</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.powershell</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.powershell</string>
+						</dict>
+					</dict>
 				</dict>
-
 				<dict>
 					<key>comment</key>
-					<string>Fallback: first bare command name in a scriptblock</string>
+					<string>non-Verb-Noun function call as first item in a one-line scriptblock</string>
 					<key>match</key>
 					<string>(?&lt;!@\{)(?&lt;=\{)[ \t\r\n]*(?:&amp;[ \t]*)?\K(?!(?i:begin|break|catch|clean|continue|data|default|define|do|dynamicparam|else|elseif|end|exit|finally|for|foreach|from|if|in|inlinescript|parallel|param|process|return|sequence|switch|throw|trap|try|until|var|while|function|filter|configuration|workflow)\b)(?!(?i:Add|Approve|Assert|Backup|Block|Build|Checkpoint|Clear|Close|Compare|Complete|Compress|Confirm|Connect|Convert|ConvertFrom|ConvertTo|Copy|Debug|Deny|Deploy|Disable|Disconnect|Dismount|Edit|Enable|Enter|Exit|Expand|Export|Find|Format|Get|Grant|Group|Hide|Import|Initialize|Install|Invoke|Join|Limit|Lock|Measure|Merge|Mount|Move|New|Open|Optimize|Out|Ping|Pop|Protect|Publish|Push|Read|Receive|Redo|Register|Remove|Rename|Repair|Request|Reset|Resize|Resolve|Restart|Restore|Resume|Revoke|Save|Search|Select|Send|Set|Show|Skip|Split|Start|Step|Stop|Submit|Suspend|Switch|Sync|Test|Trace|Unblock|Undo|Uninstall|Unlock|Unprotect|Unpublish|Unregister|Update|Use|Wait|Watch|Write|ForEach|Sort|Tee|Where)-)([\p{L}_][\p{L}\p{N}_-]*)\b</string>
 					<key>captures</key>
@@ -1037,7 +1094,10 @@
 						</dict>
 					</dict>
 				</dict>
-			
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
 			</array>
 		</dict>
 		<key>type</key>
