@@ -18,24 +18,35 @@
 & { :blockLoop while ($true) { break blockLoop } }
 #   ^^^^^^^^^^ entity.name.tag.looplabel.declaration.powershell
 #^^^          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! entity.name.tag.looplabel.declaration.powershell
+#                                    ^^^^^^^^^ entity.name.tag.looplabel.break.powershell
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^         ^^^^ ! entity.name.tag.looplabel.break.powershell
 
 & {    :blockLoop WhIlE ($true) { BrEaK blockLoop } }
 #      ^^^^^^^^^^ entity.name.tag.looplabel.declaration.powershell
 #^^^^^^          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! entity.name.tag.looplabel.declaration.powershell
+#                                       ^^^^^^^^^ entity.name.tag.looplabel.break.powershell
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^         ^^^^ ! entity.name.tag.looplabel.break.powershell
 
 $( :subExpLoop for ($i = 0; $i -lt 10; $i++) { break subExpLoop } )
 #  ^^^^^^^^^^^ entity.name.tag.looplabel.declaration.powershell
 #^^           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! entity.name.tag.looplabel.declaration.powershell
+#                                                    ^^^^^^^^^^ entity.name.tag.looplabel.break.powershell
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^          ^^^^ ! entity.name.tag.looplabel.break.powershell
 
 $(    :subExpLoop FoR ($i = 0; $i -lt 10; $i++) { BrEaK subExpLoop } )
 #     ^^^^^^^^^^^ entity.name.tag.looplabel.declaration.powershell
 #^^^^^           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! entity.name.tag.looplabel.declaration.powershell
-
+#                                                       ^^^^^^^^^^ entity.name.tag.looplabel.break.powershell
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^          ^^^^ ! entity.name.tag.looplabel.break.powershell
 
 $Global:test = $true ; :doLoop do { break doLoop } until (-not $Global:test)
 #                      ^^^^^^^ entity.name.tag.looplabel.declaration.powershell
 #^^^^^^^^^^^^^^^^^^^^^^       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! entity.name.tag.looplabel.declaration.powershell
+#                                         ^^^^^^ entity.name.tag.looplabel.break.powershell
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! entity.name.tag.looplabel.break.powershell
 
 $Global:test = $true ;    :doLoop DO { BrEaK doLoop } until (-not $Global:test)
 #                         ^^^^^^^ entity.name.tag.looplabel.declaration.powershell
 #^^^^^^^^^^^^^^^^^^^^^^^^^       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! entity.name.tag.looplabel.declaration.powershell
+#                                            ^^^^^^ entity.name.tag.looplabel.break.powershell
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ! entity.name.tag.looplabel.break.powershell

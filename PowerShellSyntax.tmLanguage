@@ -401,6 +401,16 @@
 			</array>
 		</dict>
 		<dict>
+			<key>comment</key>
+			<string>Find loop label uses after 'break' statements</string>
+
+			<key>match</match>
+			<string>(?i)(?&lt;=break[ \t])\w+\b</string>
+
+			<key>name</key>
+			<string>entity.name.tag.looplabel.break.powershell</string>
+		</dict>
+		<dict>
 			<key>match</key>
 			<string>(?&lt;!\w|-|\.)((?i:begin|break|catch|clean|continue|data|default|define|do|dynamicparam|else(?:if)?|end|exit|finally|for|from|if|in|inlinescript|parallel|param|process|return|sequence|switch|throw|trap|try|until|var|while)|%|\?)(?!\w)</string>
 			<key>name</key>
